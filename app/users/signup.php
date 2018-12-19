@@ -5,11 +5,29 @@ declare(strict_types=1);
 require __DIR__.'/../autoload.php';
 
 if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['password'])) {
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
     $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $password = password_hash(filter_var($_POST['email'], FILTER_SANITIZE_STRING), PASSWORD_DEFAULT);
+	$password = password_hash(filter_var($_POST['password'], FILTER_SANITIZE_STRING), PASSWORD_DEFAULT);
+	
+	$checkStatement = $pdo -> query('SELECT * FROM users');
+	$checkUsers = $checkStatement -> fetchAll(PDO::FETCH_ASSOC);
+
+	foreach ($checkUsers as $checkUser) {
+		if ($email === $checkUser['email']) {
+			$emailError = 'This email already exists in our system.';
+			if ($username === $checkUser['username']) {
+				$usernameError = 'The username is not available.';
+			}
+			redirect('../../signup.php');
+		} 
+		
+		else if ($username === $checkUser['username']) {
+			$usernameError = 'The username is not available.';
+			redirect('../../signup.php');
+		}
+	}
 
     $addStatement = $pdo -> prepare('INSERT INTO users(email, firstname, lastname, username, password) VALUES(:email, :firstname, :lastname, :username, :password)');
 
@@ -31,13 +49,14 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
     $_SESSION['user'] = 
     [
         'id' => $newUser['id'],
-        'name' => $newUser['name'],
+        'name' => $newUser['firstname'],
         'username' => $newUser['username'],
     ];
     redirect('../../index.php');
 }
 
-redirect('../..signup.php');
+$error = 'Please fill in all required fields.';
 
+redirect('../../signup.php');
 
 ?>

@@ -3,11 +3,11 @@
 <article>
     <form action="app/users/login.php" method="post">
         <div class="form-username">
-            <label for="username"></label>
+            <label for="username">Username:</label>
             <input name="username" type="text" required>
         </div>
         <div class="form-password">
-            <label for="password"></label>
+            <label for="password">Password:</label>
             <input name="password" type="password" required>
         </div>
 

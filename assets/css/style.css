@@ -1,0 +1,36 @@
+* { 
+	padding: 0; 
+	margin: 0; 
+	box-sizing: border-box;
+}
+
+header {
+	width: 100vw;
+	height: 10vh;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 10px;
+}
+
+article {
+	height: 85vh;
+	padding-top: 10vh;
+}
+
+article form {
+
+}
+
+footer {
+	height: 15vh;
+	padding: 20px 10px;
+}
+
+footer nav .nav-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style-type: none;
+}

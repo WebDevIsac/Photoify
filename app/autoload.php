@@ -14,5 +14,4 @@ $config = require __DIR__.'/config.php';
 // Setup database connection
 $pdo = new PDO($config['database_path']);
 
-
 ?>

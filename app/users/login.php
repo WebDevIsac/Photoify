@@ -18,7 +18,7 @@ if (isset($_POST['username'], $_POST['password'])) {
                 $_SESSION['user'] = 
                 [
                     'id' => $user['id'],
-                    'name' => $user['name'],
+                    'name' => $user['firstname'],
                     'username' => $user['username'],
                 ];
 
@@ -28,6 +28,6 @@ if (isset($_POST['username'], $_POST['password'])) {
     }
 }
 
-// redirect('../../login.php');
+redirect('../../login.php');
 
 ?>

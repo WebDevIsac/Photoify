@@ -3,20 +3,23 @@
 <article>
     <form action="app/users/signup.php" method="post">
         <div class="form-information">
-            <label for="firstname"></label>
+            <label for="firstname">Firstname:</label>
             <input name="firstname" type="text" required>
-            <label for="lastname"></label>
+            <label for="lastname">Lastname:</label>
             <input name="lastname" type="text" required>
-            <label for="email"></label>
+            <label for="email">Email:</label>
             <input name="email" type="email" required>
-            <label for="username"></label>
+			<?php if (isset($emailError)): ?>
+			<small><?php echo $emailError; ?></small>
+			<?php endif; ?>
+            <label for="username">Username:</label>
             <input name="username" type="text" required>
-        </div>
-        <div class="form-password">
-            <label for="password"></label>
+			<?php if (isset($usernameError)): ?>
+			<small><?php echo $usernameError; ?></small>
+			<?php endif; ?>
+            <label for="password">Password:</label>
             <input name="password" type="password" required>
         </div>
-
         <button type="submit">Signup</button>
     </form>
 </article>
