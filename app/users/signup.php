@@ -16,15 +16,23 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 
 	foreach ($checkUsers as $checkUser) {
 		if ($email === $checkUser['email']) {
-			$emailError = 'This email already exists in our system.';
 			if ($username === $checkUser['username']) {
-				$usernameError = 'The username is not available.';
+				$_SESSION['error'] = [
+					'email' => 'This email already exists in our system.',
+					'username' => 'The username is not available.',
+				];
+			} else {
+				$_SESSION['error'] = [
+					'email' => 'This email already exists in our system.',
+				];
 			}
 			redirect('../../signup.php');
 		} 
 		
 		else if ($username === $checkUser['username']) {
-			$usernameError = 'The username is not available.';
+			$_SESSION['error'] = [
+				'username' => 'The username is not available.'
+			];
 			redirect('../../signup.php');
 		}
 	}
@@ -51,7 +59,10 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
         'id' => $newUser['id'],
         'name' => $newUser['firstname'],
         'username' => $newUser['username'],
-    ];
+	];
+	
+	unset($_SESSION['error']);
+
     redirect('../../index.php');
 }
 

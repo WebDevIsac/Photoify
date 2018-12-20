@@ -20,14 +20,19 @@ if (isset($_POST['username'], $_POST['password'])) {
                     'id' => $user['id'],
                     'name' => $user['firstname'],
                     'username' => $user['username'],
-                ];
+				];
+				
+				unset($_SESSION['credentials']);
 
-                redirect('../../index.php');
+                redirect('../../home.php');
             }
         }
-    }
+	}
+	
+	$_SESSION['credentials'] = 'Sorry, wrong username or password';
+
 }
 
-redirect('../../login.php');
+redirect('../../index.php');
 
 ?>
