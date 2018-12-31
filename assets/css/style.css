@@ -44,6 +44,15 @@ form input {
 	margin: 10px 0;
 	font-size: 18px;
 	border: 1px solid var(--main-color);
+	text-align: center;
+}
+
+form input:active {
+	color: green;
+}
+
+form input:focus {
+	color: blue;
 }
 
 form small {
@@ -69,6 +78,8 @@ form p a {
 }
 
 footer {
+	background: var(--main-bg-color);
+	width: 100%;
 	height: 15vh;
 	padding: 20px 10px;
 }
@@ -82,5 +93,5 @@ footer nav .nav-bar {
 
 .logout {
 	position: absolute;
-	bottom: 100px;
+	margin: 200px auto;
 }
