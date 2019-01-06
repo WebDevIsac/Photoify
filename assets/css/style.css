@@ -11,8 +11,9 @@
 
 header {
 	width: 100vw;
-	height: 10vh;
+	height: 12vh;
 	position: fixed;
+	top: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -21,7 +22,7 @@ header {
 
 .form-container {
 	text-align: center;
-	padding-top: 10vh;
+	padding-top: 12vh;
 	height: 85vh;
 }
 
@@ -78,10 +79,12 @@ form p a {
 }
 
 footer {
+	position: fixed;
+	bottom: 0;
 	background: var(--main-bg-color);
 	width: 100%;
-	height: 15vh;
-	padding: 20px 10px;
+	height: 12vh;
+	padding: 15px;
 }
 
 footer nav .nav-bar {
@@ -89,6 +92,17 @@ footer nav .nav-bar {
 	justify-content: space-between;
 	align-items: center;
 	list-style-type: none;
+}
+
+.content {
+	margin-top: 15vh;
+}
+
+.message-box {
+	margin: 0;
+	height: 12vh;
+	text-align: center;
+	background: var(--main-bg-color);
 }
 
 .logout {
