@@ -35,9 +35,9 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 			];
 			redirect('../../signup.php');
 		}
-		if ($checkUser[] < 10) {
+		// if ($checkUser[] < 10) {
 
-		}
+		// }
 	}
 
     $addStatement = $pdo -> prepare('INSERT INTO users(email, firstname, lastname, username, password) VALUES(:email, :firstname, :lastname, :username, :password)');

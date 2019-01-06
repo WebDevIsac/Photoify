@@ -24,7 +24,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 				
 				unset($_SESSION['credentials']);
 
-                redirect('../../home.php');
+                redirect('../../index.php');
             }
         }
 	}
@@ -33,6 +33,6 @@ if (isset($_POST['username'], $_POST['password'])) {
 
 }
 
-redirect('../../index.php');
+redirect('../../login.php');
 
 ?>

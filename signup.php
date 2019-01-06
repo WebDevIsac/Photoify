@@ -26,7 +26,7 @@
 		</div>
 		<div class="form-password">
 			<label for="password">Password</label>
-			<input name="password" type="password" required>
+			<input name="password" type="password" minlength="8" required>
 		</div>
 		<button type="submit">Signup</button>
 		<p>or <a href="index.php">back to login</a></p>
