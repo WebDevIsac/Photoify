@@ -10,7 +10,7 @@
 				<a href="search.php" class="nav-link"><img src="assets/images/search-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
-				<a href="add.php" class="nav-link"><img src="assets/images/avatar-50px.svg" alt=""></a>
+				<a href="../add.php" class="nav-link"><img src="assets/images/avatar-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
 				<a href="news.php" class="nav-link"><img src="assets/images/camera-50px.svg" alt=""></a>

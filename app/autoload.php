@@ -14,4 +14,10 @@ $config = require __DIR__.'/config.php';
 // Setup database connection
 $pdo = new PDO($config['database_path']);
 
+// Set date
+$date = date('ymd');
+
+// Define one MB (megabyte)
+define('MB', 1048576);
+
 ?>

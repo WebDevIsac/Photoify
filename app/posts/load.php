@@ -7,6 +7,4 @@ $posts = $loadStatement -> fetchAll(PDO::FETCH_ASSOC);
 
 
 
-
-
 ?>
