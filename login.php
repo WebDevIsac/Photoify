@@ -2,10 +2,10 @@
 
 <?php
 if (isset($_SESSION['user'])) {
-	redirect('index.php');
+	redirect('/index.php');
 }
-
 ?>
+
 <div class="form-container">
 	<form action="app/users/login.php" method="post">
 		<div class="form-username">

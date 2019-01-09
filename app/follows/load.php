@@ -30,7 +30,10 @@ if (isset($_SESSION['user'])) {
 		if (!in_array($follower['user_id'], $_SESSION['following'])) {
 			$_SESSION['following'][] = $follow['user_id'];
 		}
-	}	
+	}
+
+	redirect('/../posts/load.php');
+
 }
 
 ?>

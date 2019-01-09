@@ -1,12 +1,13 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
+<?php 
+	if (!isset($_SESSION['user'])) {
+		redirect('/login.php');
+	} 
+?>
+
 <div class="container">
 
-	<?php 
-		if (!isset($_SESSION['user'])) {
-			redirect('login.php');
-		} 
-	?>
 
 	<div class="feed">
 		<?php 

@@ -1,5 +1,11 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
+<?php
+if (isset($_SESSION['user'])) {
+	redirect('/index.php');
+}
+?>
+
 <div class="form-container">
 	<form action="app/users/signup.php" method="post">
 		<div class="form-firstnmae">

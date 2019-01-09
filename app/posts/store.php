@@ -32,7 +32,7 @@ $storePost -> bindParam(':caption', $caption, PDO::PARAM_STR);
 
 $storePost -> execute();
 
-redirect('../../index.php');
+redirect('/../../index.php');
 
 
 
