@@ -31,6 +31,6 @@
 		<button type="submit">Signup</button>
 		<p>or <a href="index.php">back to login</a></p>
 	</form>
-</div>
+</div> <!-- form-container -->
 
 <?php require __DIR__.'/views/footer.php'; ?>

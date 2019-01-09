@@ -3,9 +3,9 @@
 	--background-color: #acacac;
 }
 
-* { 
-	padding: 0; 
-	margin: 0; 
+* {
+	padding: 0;
+	margin: 0;
 	box-sizing: border-box;
 }
 
@@ -25,14 +25,12 @@ form {
 	font-size: 24px;
 }
 
-form > div {
+form div {
 	display: flex;
 	flex-direction: column;
 }
 
-form label {
-	
-}
+form label {}
 
 form input {
 	height: 40px;

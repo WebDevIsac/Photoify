@@ -9,8 +9,8 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
 	$password = password_hash(filter_var($_POST['password'], FILTER_SANITIZE_STRING), PASSWORD_DEFAULT);
 	
-	$checkStatement = $pdo -> query('SELECT * FROM users');
-	$checkUsers = $checkStatement -> fetchAll(PDO::FETCH_ASSOC);
+	$statement = $pdo -> query('SELECT * FROM users');
+	$checkUsers = $statement -> fetchAll(PDO::FETCH_ASSOC);
 
 	foreach ($checkUsers as $checkUser) {
 		if ($email === $checkUser['email']) {
@@ -38,29 +38,30 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 		// }
 	}
 
-    $addStatement = $pdo -> prepare('INSERT INTO users(email, firstname, lastname, username, password) VALUES(:email, :firstname, :lastname, :username, :password)');
+    $addUser = $pdo -> prepare('INSERT INTO users(email, firstname, lastname, username, password) VALUES(:email, :firstname, :lastname, :username, :password)');
 
-    $addStatement -> bindParam(':email', $email, PDO::PARAM_STR);
-    $addStatement -> bindParam(':firstname', $firstname, PDO::PARAM_STR);
-    $addStatement -> bindParam(':lastname', $lastname, PDO::PARAM_STR);
-    $addStatement -> bindParam(':username', $username, PDO::PARAM_STR);
-    $addStatement -> bindParam(':password', $password, PDO::PARAM_STR);
+    $addUser -> bindParam(':email', $email, PDO::PARAM_STR);
+    $addUser -> bindParam(':firstname', $firstname, PDO::PARAM_STR);
+    $addUser -> bindParam(':lastname', $lastname, PDO::PARAM_STR);
+    $addUser -> bindParam(':username', $username, PDO::PARAM_STR);
+    $addUser -> bindParam(':password', $password, PDO::PARAM_STR);
 
-    $addStatement -> execute();
+    $addUser -> execute();
 
-    $signupStatement = $pdo -> prepare('SELECT * FROM users WHERE username = :username');
-    $signupStatement -> bindParam(':username', $username, PDO::PARAM_STR);
+    $getUser = $pdo -> prepare('SELECT * FROM users WHERE username = :username');
+    $getUser -> bindParam(':username', $username, PDO::PARAM_STR);
 
-    $signupStatement -> execute();
+    $getUser -> execute();
 
-    $newUser = $signupStatement -> FETCH(PDO::FETCH_ASSOC);
+    $newUser = $getUser -> FETCH(PDO::FETCH_ASSOC);
 
     $_SESSION['user'] = 
-    [
-        'id' => $newUser['id'],
-        'name' => $newUser['firstname'],
-        'username' => $newUser['username'],
-	];
+		[
+			'id' => $newUser['id'],
+			'username' => $newUser['username'],
+			'firstname' => $newUser['firstname'],
+			'lastname' => $newUser['lastname'],
+		];
 	
 	unset($_SESSION['error']);
 
