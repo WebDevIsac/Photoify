@@ -19,4 +19,6 @@ $storeFollowers -> bindParam('followerId', $userId, PDO::PARAM_INT);
 
 $storeFollowers -> execute();
 
+redirect('../../profile.php');
+
 ?>

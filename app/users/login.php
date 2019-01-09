@@ -22,7 +22,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 				
 				unset($_SESSION['credentials']);
 
-                redirect('/../../index.php');
+                redirect('../follows/load.php');
             }
         }
 	}
@@ -31,6 +31,6 @@ if (isset($_POST['username'], $_POST['password'])) {
 
 }
 
-redirect('/../../login.php');
+redirect('../../login.php');
 
 ?>

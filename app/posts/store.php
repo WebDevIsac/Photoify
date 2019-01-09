@@ -20,7 +20,7 @@ move_uploaded_file($images['tmp_name'], $photoUrl);
 $userId = $_SESSION['user']['id'];
 $caption = filter_var($_POST['caption'], FILTER_SANITIZE_STRING);
 
-$storePost = $pdo -> prepare("INSERT INTO photo(user_id, photo_url, caption, timestamp) VALUES(:user_id, :photo_url, :caption, DateTime('now'))");
+$storePost = $pdo -> prepare("INSERT INTO posts(user_id, photo_url, caption, timestamp) VALUES(:user_id, :photo_url, :caption, DateTime('now'))");
 
 if (!$storePost) {
 	die(var_dump($pdo->errorInfo()));
@@ -32,7 +32,7 @@ $storePost -> bindParam(':caption', $caption, PDO::PARAM_STR);
 
 $storePost -> execute();
 
-redirect('/../../index.php');
+redirect('../../index.php');
 
 
 

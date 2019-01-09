@@ -24,14 +24,14 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 					'email' => 'This email already exists in our system.',
 				];
 			}
-			redirect('/../../signup.php');
+			redirect('../../signup.php');
 		} 
 		
 		else if ($username === $checkUser['username']) {
 			$_SESSION['error'] = [
 				'username' => 'The username is not available.'
 			];
-			redirect('/../../signup.php');
+			redirect('../../signup.php');
 		}
 		// if ($checkUser[] < 10) {
 
@@ -65,11 +65,11 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 	
 	unset($_SESSION['error']);
 
-    redirect('/../../index.php');
+	redirect('../follows/load.php');
 }
 
 $error = 'Please fill in all required fields.';
 
-redirect('/../../signup.php');
+redirect('../../signup.php');
 
 ?>
