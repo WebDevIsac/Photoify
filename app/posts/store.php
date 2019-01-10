@@ -1,10 +1,9 @@
 <?php 
 
 require __DIR__.'/../autoload.php';
-
-$images = $_FILES['photo'];
-$type = $images['type'];
-$size = $images['size'];
+$image = $_FILES['photo'];
+$type = $image['type'];
+$size = $image['size'];
 if ($type !== 'image/jpeg' && $type !== 'image/gif' && $type !== 'image/png') {
 	echo 'Wrong file format';
 	die;
@@ -13,9 +12,10 @@ if ($type !== 'image/jpeg' && $type !== 'image/gif' && $type !== 'image/png') {
 	die;
 }
 
-$photoUrl = __DIR__.'/../../assets/posts/' . uniqid() . "-$date-" . $images['name'];
+$photoPath = __DIR__.'/../../assets/posts/';
+$photoName =  uniqid() . "-$date-" . $image['name'];
 
-move_uploaded_file($images['tmp_name'], $photoUrl);
+move_uploaded_file($image['tmp_name'], $photoPath . $photoName);
 
 $userId = $_SESSION['user']['id'];
 $caption = filter_var($_POST['caption'], FILTER_SANITIZE_STRING);
@@ -27,7 +27,7 @@ if (!$storePost) {
 }
 
 $storePost -> bindParam(':user_id', $userId, PDO::PARAM_INT);
-$storePost -> bindParam(':photo_url', $photoUrl, PDO::PARAM_STR);
+$storePost -> bindParam(':photo_url', $photoName, PDO::PARAM_STR);
 $storePost -> bindParam(':caption', $caption, PDO::PARAM_STR);
 
 $storePost -> execute();

@@ -19,16 +19,10 @@ if (isset($_SESSION['following'])) {
 		$posts[] = $loadPosts -> fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	
 	foreach ($posts as $array) {
 		foreach ($array as $post) { 
 			$allPosts[] = $post;
 		}
-	}
-	
-	foreach ($allPosts as $allPost) {
-		print_r($allPost);
-		echo '<br>';
 	}
 
 }
