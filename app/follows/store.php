@@ -14,8 +14,8 @@ $storeFollowing -> execute();
 
 $storeFollowers = $pdo -> prepare('INSERT INTO followers(user_id, follower_id) VALUES(:user_id, :follower_id)');
 
-$storeFollowers -> bindParam('userId', $followId, PDO::PARAM_INT);
-$storeFollowers -> bindParam('followerId', $userId, PDO::PARAM_INT);
+$storeFollowers -> bindParam(':userId', $followId, PDO::PARAM_INT);
+$storeFollowers -> bindParam(':follower_Id', $userId, PDO::PARAM_INT);
 
 $storeFollowers -> execute();
 

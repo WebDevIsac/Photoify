@@ -10,10 +10,16 @@
 
 	<div class="feed">
 		<?php 
-			// foreach ($posts as $post):
+			foreach ($_SESSION['posts'] as $posts){
+				foreach ($posts as $post) {
+					echo $post . '<br>';
+				}
+			}
+			var_dump(count($_SESSION['followers']));
+				
 				?>
 				
-				<!-- <div class="post">
+				<div class="post">
 					<div class="image-container">
 						<img src="" alt="">
 					</div>
@@ -21,8 +27,8 @@
 						<p class="likes"></p>
 						<p class="date"></p>
 						<p class="caption"></p>
-					</div> -->
-				<!-- </div> post -->
+					</div>
+				</div> <!-- post -->
 			
 			<?php
 			//  endforeach; 

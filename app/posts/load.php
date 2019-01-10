@@ -4,27 +4,31 @@ require __DIR__.'/../autoload.php';
 
 if (isset($_SESSION['following'])) {
 
+
 	foreach ($_SESSION['following'] as $follow) {
 
-		$loadUsers = $pdo -> prepare('SELECT * FROM users WHERE id = :user_id');
-		$loadUsers -> bindParam(':user_id', $follow, PDO::PARAM_INT);
-		$loadUsers -> execute();
-
-		$following[] = $loadUsers -> fetchAll(PDO::FETCH_ASSOC);
-		
 		$loadPosts = $pdo -> prepare('SELECT * FROM posts WHERE user_id = :user_id');
-		$loadPosts -> bindParam(':user_id', $follow, PDO::PARAM_INT);
+		$loadPosts -> bindParam(':user_id', $follow['follow_id'], PDO::PARAM_INT);
 		$loadPosts -> execute();
-		
-		$posts[] = $loadPosts -> fetchAll(PDO::FETCH_ASSOC);
-	}
 
-	foreach ($posts as $array) {
-		foreach ($array as $post) { 
-			$allPosts[] = $post;
+		$userPosts = $loadPosts -> fetchAll(PDO::FETCH_ASSOC);
+		foreach ($userPosts as $userPost) {
+			$posts[] = $userPost;
 		}
 	}
 
+	foreach ($posts as $post) {
+		$_SESSION['posts'][] = [
+			'user_id' => $post['user_id'],
+			'username' => $post['username'],
+			'photo_url' => $post['photo_url'],
+			'caption' => $post['caption'],
+			'timestamp' => $post['timestamp']
+		];
+	}
+
+
+	redirect('../../index.php');
 }
 
 ?>

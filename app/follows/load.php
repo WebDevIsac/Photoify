@@ -6,31 +6,50 @@ if (isset($_SESSION['user'])) {
 
 	$userId = $_SESSION['user']['id'];
 
-	$loadFollowing = $pdo -> prepare('SELECT * FROM following WHERE user_id = :user_id');
-	$loadFollowing -> bindParam(':user_id', $userId, PDO::PARAM_INT);
+	$stmtFollowing = $pdo -> prepare('SELECT * FROM following WHERE user_id = :user_id');
+	$stmtFollowing -> bindParam(':user_id', $userId, PDO::PARAM_INT);
+	$stmtFollowing -> execute();
 	
-	$loadFollowing -> execute();
+	$stmtFollowing = $stmtFollowing -> fetchAll(PDO::FETCH_ASSOC);
 	
-	$following = $loadFollowing -> fetchAll(PDO::FETCH_ASSOC);
 
-	foreach ($following as $follow) {
-		$followingArray[] = $follow['follow_id'];
+	foreach ($stmtFollowing as $follow) {
+		$loadFollowing = $pdo -> prepare('SELECT id, firstname, lastname, username FROM users WHERE id = :user_id');
+		$loadFollowing -> bindParam(':user_id', $follow['follow_id'], PDO::PARAM_INT);
+		$loadFollowing -> execute();
+		
+		$loadFollowing = $loadFollowing -> fetchAll(PDO::FETCH_ASSOC);
+		foreach ($loadFollowing as $loadFollow) {
+			
+			$_SESSION['following'][] = [
+				'follow_id' => $loadFollow['id'],
+				// 'firstname' => $loadFollow['firstname'],
+				// 'lastname' => $loadFollow['lastname'],
+				'username' => $loadFollow['username']
+			];
+		}
 	}
 
-	$_SESSION['following'] = $followingArray;
+	$stmtFollowers = $pdo -> prepare('SELECT * FROM followers WHERE user_id = :user_id');
+	$stmtFollowers -> bindParam(':user_id', $userId, PDO::PARAM_INT);
+	$stmtFollowers -> execute();
 
-	$loadFollowers = $pdo -> prepare('SELECT * FROM followers WHERE user_id = :user_id');
-	$loadFollowers -> bindParam(':user_id', $userId, PDO::PARAM_INT);
+	$stmtFollowers = $stmtFollowers -> fetchAll(PDO::FETCH_ASSOC);
 
-	$loadFollowers -> execute();
+	foreach ($stmtFollowers as $follower) {
+		$loadFollowers = $pdo -> prepare('SELECT id, firstname, lastname, username FROM users WHERE id = :user_id');
+		$loadFollowers -> bindParam(':user_id', $follower['follower_id'], PDO::PARAM_INT);
+		$loadFollowers -> execute();
+		$loadFollowers = $loadFollowers -> fetchAll(PDO::FETCH_ASSOC);
 
-	$followers = $loadFollowers -> fetchAll(PDO::FETCH_ASSOC);
-
-	foreach ($followers as $follower) {
-		$followersArray[] = $follower['user_id'];
+		foreach ($loadFollowers as $loadFollower) {
+			
+			$_SESSION['followers'][] = [
+				'follow_id' => $loadFollower['id'],
+				'username' => $loadFollower['username']
+			];
+		}
 	}
-
-	$_SESSION['followers'] = $followersArray;
 
 	redirect('../posts/load.php');
 
