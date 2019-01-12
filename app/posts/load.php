@@ -4,6 +4,8 @@ require __DIR__.'/../autoload.php';
 
 if (isset($_SESSION['following'])) {
 
+	$loadAllUsers = $pdo -> query('SELECT * FROM users');
+	$loadAllUsers = $loadAllUsers -> fetchAll(PDO::FETCH_ASSOC);
 
 	foreach ($_SESSION['following'] as $follow) {
 
@@ -14,20 +16,31 @@ if (isset($_SESSION['following'])) {
 
 		foreach ($loadPosts as $userPost) {
 			$posts[] = $userPost;
+			$dates[] = $userPost['timestamp'];
 		}
 	}
 
+	rsort($dates);
+	
 	unset($_SESSION['posts']);
-	foreach ($posts as $post) {
-		$_SESSION['posts'][] = 
-		[
-			'photo_url' => $post['photo_url'],
-			'user_id' => $post['user_id'],
-			'username' => $post['username'],
-			'timestamp' => $post['timestamp'],
-			'caption' => $post['caption'],
-			'likes' => $post['likes']
-		];
+	foreach ($dates as $date) {
+		foreach ($loadAllUsers as $user) {
+			foreach ($posts as $post) {
+				if ($user['user_id'] === $post['user_id']) {
+					if ($post['timestamp'] === $date) {		
+						$_SESSION['posts'][] = 
+						[
+							'photo_url' => $post['photo_url'],
+							'username' => $post['username'],
+							'profile_pic' => $user['profile_pic_url'],
+							'timestamp' => $date,
+							'caption' => $post['caption'],
+							'likes' => $post['likes']
+						];
+					}
+				}
+			}
+		}
 	}
 
 	redirect('../../index.php');

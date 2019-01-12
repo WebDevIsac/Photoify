@@ -38,7 +38,7 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 		// }
 	}
 
-    $addUser = $pdo -> prepare('INSERT INTO users(email, firstname, lastname, username, password) VALUES(:email, :firstname, :lastname, :username, :password)');
+    $addUser = $pdo -> prepare('INSERT INTO users(email, firstname, lastname, username, password, profile_pic_url) VALUES(:email, :firstname, :lastname, :username, :password, avatar.jpg)');
 
     $addUser -> bindParam(':email', $email, PDO::PARAM_STR);
     $addUser -> bindParam(':firstname', $firstname, PDO::PARAM_STR);
@@ -59,8 +59,11 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 		[
 			'user_id' => $newUser['user_id'],
 			'username' => $newUser['username'],
+			'email' => $newUser['email'],
 			'firstname' => $newUser['firstname'],
 			'lastname' => $newUser['lastname'],
+			'profile_pic' => 'avatar.jpg',
+			'bio' => NULL
 		];
 	
 	unset($_SESSION['error']);

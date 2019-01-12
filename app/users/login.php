@@ -16,8 +16,12 @@ if (isset($_POST['username'], $_POST['password'])) {
                 $_SESSION['user'] = 
                 [
                     'user_id' => $user['user_id'],
-                    'name' => $user['firstname'],
-                    'username' => $user['username'],
+					'username' => $user['username'],
+					'email' => $user['email'],
+					'firstname' => $user['firstname'],
+					'lastname' => $user['lastname'],
+					'profile_pic' => $user['profile_pic_url'],
+					'bio' => NULL
 				];
 				
 				unset($_SESSION['credentials']);

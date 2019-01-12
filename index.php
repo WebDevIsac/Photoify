@@ -4,29 +4,31 @@
 	if (!isset($_SESSION['user'])) {
 		redirect('login.php');
 	} 
-?>
+	?>
 
 <div class="feed">
 	<?php 
-	foreach ($_SESSION['posts'] as $posts): 
+	foreach ($_SESSION['posts'] as $post): 
+		$filePath = 'assets/images/profile-pictures/';
+
 	?>
 		<div class="post">
 			<div class="user-container">
 				<form action="app/users/load.php" method="get">
-					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $posts['user_id']; ?>">
-					<div class="submit-button" onClick="javascript:this.parentNode.submit()">
-						<img class="profile-image" src="<?php echo $posts['username']; ?>" alt="">
-						<p><?php echo $posts['username']; ?></p>
+					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $post['username']; ?>">
+					<div class="user-info" onClick="javascript:this.parentNode.submit()">
+						<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $post['profile_pic']; ?>" alt="">
+						<p><?php echo $post['username']; ?></p>
 					</div>
 				</form>
 			</div>
 			<div class="image-container">
-				<img class="image" src="assets/posts/<?php echo $posts['photo_url']; ?>" alt="">
+				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
 			</div>
 			<div class="text-container">
-				<p class="likes"><?php echo $posts['likes']; ?></p>
-				<p class="date"><?php echo $posts['timestamp']; ?></p>
-				<p class="caption"><?php echo $posts['caption']; ?></p>
+				<p class="likes"><?php echo $post['likes']; ?></p>
+				<p class="date"><?php echo $post['timestamp']; ?></p>
+				<p class="caption"><?php echo $post['caption']; ?></p>
 			</div>
 		</div> <!-- post -->
 	<?php

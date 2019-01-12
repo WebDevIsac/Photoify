@@ -1,33 +1,32 @@
 </div> <!-- container -->
 
-<footer>
 
-	<?php if (isset($_SESSION['user'])): ?>
-	<nav>
+<footer>
+<?php if (isset($_SESSION['user'])): ?>
 		<ul class="nav-bar">
 			<li class="nav-item">
-				<a href="../index.php" class="nav-link"><img src="assets/images/home-50px.svg" alt=""></a>
+				<a href="../index.php" class="nav-link"><img src="assets/images/svg-images/home-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
-				<a href="search.php" class="nav-link"><img src="assets/images/search-50px.svg" alt=""></a>
+				<a href="search.php" class="nav-link"><img src="assets/images/svg-images/search-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
-				<a href="../add.php" class="nav-link"><img src="assets/images/camera-50px.svg" alt=""></a>
+				<a href="../add.php" class="nav-link"><img src="assets/images/svg-images/camera-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
-				<a href="news.php" class="nav-link"><img src="assets/images/news-50px.svg" alt=""></a>
+				<a href="news.php" class="nav-link"><img src="assets/images/svg-images/news-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
-				<a href="profile.php" class="nav-link"><img src="assets/images/avatar-50px.svg" alt=""></a>
+				<form action="app/users/load.php" method="get">
+					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $_SESSION['user']['username']; ?>">
+					<img src="assets/images/svg-images/avatar-50px.svg" alt="" onClick="javascript:this.parentNode.submit()">
+				</form>	
 			</li>
 		</ul>
-	</nav>
 	<?php elseif ($_SERVER['PHP_SELF'] === '/explore.php'): ?>
 	<h1>Back to login page</h1>
 	<?php else: ?>
-	<nav>
 		<a href="explore.php">Explore</a>
-	</nav>
 	<?php endif; ?>
 </footer>
 
