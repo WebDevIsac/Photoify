@@ -1,8 +1,8 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<div class="container">
 	
-	<?php echo $_GET['current-profile']; ?>
+	<?php if ($_SESSION['user']['user_id'] === $_SESSION['current-profile']['user_id']) {} ?>
+	<?php var_dump($_SESSION['current-profile']); ?> 
 
 
 
@@ -10,7 +10,6 @@
 
 
 
-</div>
 
 
 <?php require __DIR__.'/views/footer.php'; ?>

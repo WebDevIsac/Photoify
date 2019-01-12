@@ -23,4 +23,5 @@ if (isset($_SESSION['user'])) {
 		<p>or <a href="signup.php">signup here</a></p>
 	</form>
 </div> <!-- form-container -->
+
 <?php require __DIR__.'/views/footer.php'; ?>

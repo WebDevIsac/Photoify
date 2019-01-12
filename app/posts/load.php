@@ -17,8 +17,10 @@ if (isset($_SESSION['following'])) {
 		}
 	}
 
+	unset($_SESSION['posts']);
 	foreach ($posts as $post) {
-		$_SESSION['posts'][] = [
+		$_SESSION['posts'][] = 
+		[
 			'photo_url' => $post['photo_url'],
 			'user_id' => $post['user_id'],
 			'username' => $post['username'],

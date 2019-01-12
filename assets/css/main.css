@@ -10,13 +10,13 @@
 }
 
 .container {
-	margin-top: 12vh;
+	margin-top: 10vh;
 	height: 100vh;
 }
 
 .form-container {
 	text-align: center;
-	padding-top: 12vh;
+	padding-top: 10vh;
 	height: 85vh;
 }
 
@@ -76,7 +76,7 @@ form p a {
 
 .message-box {
 	margin: 0;
-	height: 12vh;
+	height: 10vh;
 	text-align: center;
 	background: var(--background-color);
 }

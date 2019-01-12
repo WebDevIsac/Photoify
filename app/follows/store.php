@@ -2,7 +2,7 @@
 
 require __DIR__.'/../autoload.php';
 
-$userId = $_SESSION['user']['id'];
+$userId = $_SESSION['user']['user_id'];
 $followId = $_POST['follow_id'];
 
 $storeFollowing = $pdo -> prepare('INSERT INTO following(user_id, follow_id) VALUES(:user_id, :follow_id)');

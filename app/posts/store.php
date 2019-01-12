@@ -17,7 +17,7 @@ $photoName =  uniqid() . "-$date-" . $image['name'];
 
 move_uploaded_file($image['tmp_name'], $photoPath . $photoName);
 
-$userId = $_SESSION['user']['id'];
+$userId = $_SESSION['user']['user_id'];
 $caption = filter_var($_POST['caption'], FILTER_SANITIZE_STRING);
 
 $storePost = $pdo -> prepare("INSERT INTO posts(user_id, photo_url, caption, timestamp) VALUES(:user_id, :photo_url, :caption, DateTime('now'))");

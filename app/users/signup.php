@@ -57,7 +57,7 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 
     $_SESSION['user'] = 
 		[
-			'id' => $newUser['id'],
+			'user_id' => $newUser['user_id'],
 			'username' => $newUser['username'],
 			'firstname' => $newUser['firstname'],
 			'lastname' => $newUser['lastname'],
