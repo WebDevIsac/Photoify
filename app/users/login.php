@@ -3,7 +3,7 @@
 require __DIR__.'/../autoload.php';
 
 if (isset($_POST['username'], $_POST['password'])) {
-    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+    $username = strtolower(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
     
     $loginStatement = $pdo -> query('SELECT * FROM users');

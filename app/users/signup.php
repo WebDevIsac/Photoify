@@ -6,7 +6,7 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
     $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
-    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+    $username = strtolower(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
 	$password = password_hash(filter_var($_POST['password'], FILTER_SANITIZE_STRING), PASSWORD_DEFAULT);
 	
 	$statement = $pdo -> query('SELECT * FROM users');

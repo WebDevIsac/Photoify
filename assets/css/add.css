@@ -1,0 +1,11 @@
+.add-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.add-form .image {
+	height: 300px;
+	width: 300px;
+	background: url('../images/profile-pictures/avatar.jpg');
+	background-repeat: no-repeat;
+}

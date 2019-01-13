@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/footer.css">
 	<link rel="stylesheet" href="assets/css/header.css">
+	<link rel="stylesheet" href="assets/css/profile.css">
+	<link rel="stylesheet" href="assets/css/add.css">
     <title>Photoify</title>
 </head>
 <body>

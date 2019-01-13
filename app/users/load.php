@@ -10,6 +10,7 @@ if (isset($_GET['current-profile'])) {
 	$user['profile_pic_url'] = $user['profile_pic_url'] ?? 'avatar.jpg';
 	$user['bio'] = $user['bio'] ?? '';
 
+	if (isset($_SESSION['current-profile'])) { unset($_SESSION['current-profile']); }
 	$_SESSION['current-profile'] = 
 	[
 		'user_id' => $user['user_id'],
@@ -17,10 +18,11 @@ if (isset($_GET['current-profile'])) {
 		'firstname' => $user['firstname'],
 		'lastname' => $user['lastname'],
 		'profile_pic' => $user['profile_pic_url'],
-		'bio' => $user['bio']
+		'bio' => $user['bio'],
+		'posts' => []
 	];
 
-	redirect('../../profile.php');
+	redirect('../posts/loadProfile.php');
 }
 
 
