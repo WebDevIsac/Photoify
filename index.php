@@ -15,7 +15,7 @@
 		<div class="post">
 			<div class="user-container">
 				<form action="app/users/load.php" method="get">
-					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $post['username']; ?>">
+					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $post['user_id']; ?>">
 					<div class="user-info" onClick="javascript:this.parentNode.submit()">
 						<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $post['profile_pic']; ?>" alt="">
 						<p><?php echo $post['username']; ?></p>

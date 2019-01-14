@@ -32,6 +32,7 @@ if (isset($_SESSION['following'])) {
 						[
 							'photo_url' => $post['photo_url'],
 							'username' => $post['username'],
+							'user_id' => $post['user_id'],
 							'profile_pic' => $user['profile_pic_url'],
 							'timestamp' => $date,
 							'caption' => $post['caption'],

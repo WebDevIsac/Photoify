@@ -18,7 +18,7 @@
 			</li>
 			<li class="nav-item">
 				<form action="app/users/load.php" method="get">
-					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $_SESSION['user']['username']; ?>">
+					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $_SESSION['user']['user_id']; ?>">
 					<img src="assets/images/svg-images/avatar-50px.svg" alt="" onClick="javascript:this.parentNode.submit()">
 				</form>	
 			</li>
