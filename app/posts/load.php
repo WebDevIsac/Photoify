@@ -15,9 +15,6 @@ if (isset($_SESSION['following'])) {
 		$loadPosts = $loadPosts -> fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($loadPosts as $userPost) {
-			$posts[] = $userPost;
-			$dates[] = $userPost['timestamp'];
-			
 			$loadLikes = $pdo -> prepare('SELECT * FROM likes WHERE post_id = :post_id');
 			$loadLikes -> bindParam(':post_id', $userPost['post_id'], PDO::PARAM_INT);
 			$loadLikes -> execute();
@@ -25,45 +22,54 @@ if (isset($_SESSION['following'])) {
 			if (!$loadLikes) {
 				$count = 0;
 			} else {
-				$likes[] = $loadLikes;
+				$count = count($loadLikes);
+				foreach ($loadLikes as $like) {
+					if ($like['user_id'] == $_SESSION['user']['user_id']) {
+						$isLiked = true;
+					} else {
+						$isLiked = false;
+					}
+				}
+				if (isset($isLiked)) { $userPost['is_liked'] = $isLiked; }
+				var_dump($userPost);
+				echo '<br><br>';
 			}
+			
+
+			$userPost['likes'] = $count;
+
+			$posts[] = $userPost;
+			$dates[] = $userPost['timestamp'];
 		}
 	}
-
+die;
 	rsort($dates);
 	unset($_SESSION['posts']);
 
 	foreach ($dates as $date) {
 		foreach ($loadAllUsers as $user) {
 			foreach ($posts as $post) {
-				foreach ($likes as $like) {
-					if ($like['post_id'] === $post['post_id']) {
-						echo $like['post_id'];
-						if ($like['post_id'] === $post['post_id']) {
-							if ($user['user_id'] === $post['user_id']) {
-								if ($post['timestamp'] === $date) {		
-									$_SESSION['posts'][] = 
-									[
-										'post_id' => $post['post_id'],
-										'photo_url' => $post['photo_url'],
-										'username' => $post['username'],
-										'user_id' => $post['user_id'],
-										'profile_pic' => $user['profile_pic_url'],
-										'timestamp' => $date,
-										'caption' => $post['caption'],
-										'likes' => $post['likes']
-									];
-								}
-							}
-						}
+				if ($user['user_id'] === $post['user_id']) {
+					if ($post['timestamp'] === $date) {		
+						$_SESSION['posts'][] = 
+						[
+							'post_id' => $post['post_id'],
+							'photo_url' => $post['photo_url'],
+							'username' => $post['username'],
+							'user_id' => $post['user_id'],
+							'profile_pic' => $user['profile_pic_url'],
+							'timestamp' => $date,
+							'caption' => $post['caption'],
+							'likes' => $post['likes'],
+							'is_liked' => $post['is_liked']
+						];
+						var_dump($_SESSION['posts']);
 					}
 				}
 			}
 		}
 	}
-
-	die;
-	
+die;
 	redirect('../../index.php');
 }
 

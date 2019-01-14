@@ -3,7 +3,7 @@
 <?php 
 	if (!isset($_SESSION['user'])) {
 		redirect('login.php');
-	} 
+	}
 	?>
 
 <div class="feed">
@@ -28,7 +28,7 @@
 			<div class="text-container">
 				<div class="like-container">
 					<p class="likes"><?php echo $post['likes']; ?></p>
-					<a href="app/posts/updateLike.php?post=<?php echo $post['post_id']; ?>" class="like-button">Like</a>
+					<a href="app/posts/updateLike.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $post['is_liked']; ?></a>
 				</div>
 				<p class="date"><?php echo $post['timestamp']; ?></p>
 				<p class="caption"><?php echo $post['caption']; ?></p>

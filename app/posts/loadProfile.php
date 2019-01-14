@@ -10,10 +10,24 @@ if (isset($_SESSION['current-profile'])) {
 	$loadPosts -> execute();
 	$loadPosts = $loadPosts -> fetchAll(PDO::FETCH_ASSOC);
 	foreach ($loadPosts as $loadPost) {
+		$loadLikes = $pdo -> prepare('SELECT * FROM likes WHERE post_id = :post_id');
+		$loadLikes -> bindParam(':post_id', $userPost['post_id'], PDO::PARAM_INT);
+		$loadLikes -> execute();
+		$loadLikes = $loadLikes -> fetchAll(PDO::FETCH_ASSOC);
+		if (!$loadLikes) {
+			$count = 0;
+		} else {
+			$count = count($loadLikes);
+		}
+
+		$loadPost['likes'] = $count;
+		
 		$posts[] = $loadPost;
 		$dates[] = $loadPost['timestamp'];
 	}
+
 	rsort($dates);
+	
 	foreach ($dates as $date) {
 		foreach ($posts as $post) {
 			if ($post['timestamp'] === $date) {

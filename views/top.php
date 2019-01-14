@@ -1,7 +1,7 @@
 <header>
-	<!-- <img src="/../assets/images/message-30px.svg" alt=""> -->
+	<a href="">Message</a>
 	<a href="../index.php">Photoify</a>
-	<!-- <img src="/../assets/images/camera-30px.svg" alt=""> -->
+	<a href="../app/users/logout.php">Logout</a>
 </header>
 
 <div class="container">
