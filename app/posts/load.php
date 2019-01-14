@@ -31,8 +31,6 @@ if (isset($_SESSION['following'])) {
 					}
 				}
 				if (isset($isLiked)) { $userPost['is_liked'] = $isLiked; }
-				var_dump($userPost);
-				echo '<br><br>';
 			}
 			
 
@@ -42,7 +40,7 @@ if (isset($_SESSION['following'])) {
 			$dates[] = $userPost['timestamp'];
 		}
 	}
-die;
+	
 	rsort($dates);
 	unset($_SESSION['posts']);
 
