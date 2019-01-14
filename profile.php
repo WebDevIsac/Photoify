@@ -1,6 +1,7 @@
 <?php require __DIR__.'/views/header.php'; 
 
 	if (isset($_SESSION['current-profile'])) {$user = $_SESSION['current-profile'];
+		unset($_SESSION['like_post_id']); 
 		if ($user['user_id'] == $_SESSION['user']['user_id']) {
 			$buttonText = 'Edit Profile'; 
 		} else {
@@ -56,8 +57,12 @@
 
 
 	<div class="feed">
-		<?php foreach ($_SESSION['current-profile']['posts'] as $post): ?>
-		<div class="post">
+		<?php 
+		foreach ($_SESSION['current-profile']['posts'] as $post): 
+			if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
+			else { $likeButtonText = 'Like'; }
+		?>
+		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
 				<div class="user-info">
 					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $user['profile_pic']; ?>" alt="">
@@ -69,15 +74,15 @@
 				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
 			</div>
 			<div class="text-container">
-				<p class="likes"><?php echo $post['likes']; ?></p>
+				<div class="like-container">
+					<p class="likes"><?php echo $post['likes']; ?> likes</p>
+					<a href="app/posts/loadProfile.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $likeButtonText; ?></a>
+				</div>
 				<p class="date"><?php echo $post['timestamp']; ?></p>
 				<p class="caption"><?php echo $post['caption']; ?></p>
 			</div>
 		</div> <!-- profile-post -->
 		<?php endforeach; ?>
 	</div> <!-- profile-feed -->
-
-
-
 
 <?php require __DIR__.'/views/footer.php'; ?>

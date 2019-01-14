@@ -22,9 +22,12 @@ if (isset($_GET['post'])) {
 		$deleteLike -> bindParam(':user_id', $_SESSION['user']['user_id'], PDO::PARAM_INT);
 		$deleteLike -> execute();
 	}
+
+	$_SESSION['like_post_id'] = $postId;
+
+	redirect('load.php');
 }
 
-redirect('load.php');
 
 
 ?>

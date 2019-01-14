@@ -4,15 +4,19 @@
 	if (!isset($_SESSION['user'])) {
 		redirect('login.php');
 	}
+
 	?>
 
 <div class="feed">
 	<?php 
+	$filePath = 'assets/images/profile-pictures/';
+	
 	foreach ($_SESSION['posts'] as $post): 
-		$filePath = 'assets/images/profile-pictures/';
+		if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
+		else { $likeButtonText = 'Like'; }
 
 	?>
-		<div class="post">
+		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
 				<form action="app/users/load.php" method="get">
 					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $post['user_id']; ?>">
@@ -27,8 +31,8 @@
 			</div>
 			<div class="text-container">
 				<div class="like-container">
-					<p class="likes"><?php echo $post['likes']; ?></p>
-					<a href="app/posts/updateLike.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $post['is_liked']; ?></a>
+					<p class="likes"><?php echo $post['likes']; ?> likes</p>
+					<a href="app/posts/updateLike.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $likeButtonText; ?></a>
 				</div>
 				<p class="date"><?php echo $post['timestamp']; ?></p>
 				<p class="caption"><?php echo $post['caption']; ?></p>

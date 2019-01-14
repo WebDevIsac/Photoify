@@ -4,8 +4,8 @@ header {
 	position: absolute;
 	top: 0;
 	display: flex;
+	justify-content: space-around;
 	align-items: center;
-	justify-content: center;
 	background-color: var(--background-color);
 }
 
@@ -13,4 +13,8 @@ header a {
 	text-decoration: none;
 	color: var(--color);
 	font-size: 30px;
+}
+
+header a:first-child {
+	padding-top: 10px;
 }

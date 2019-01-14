@@ -2,6 +2,7 @@
 
 require __DIR__.'/../autoload.php';
 
+
 if (isset($_SESSION['current-profile'])) {
 	$loadFollowing = $pdo -> prepare('SELECT * FROM following WHERE user_id = :user_id');
 	$loadFollowing -> bindParam(':user_id', $_SESSION['current-profile']['user_id'], PDO::PARAM_INT);
@@ -30,6 +31,9 @@ if (isset($_SESSION['current-profile'])) {
 			];
 		}
 	} 
+	if (isset($_SESSION['like_post_id'])) {
+		redirect('../../profile.php#' . $_SESSION['like_post_id']);
+	}
 
 	redirect('../../profile.php');
 

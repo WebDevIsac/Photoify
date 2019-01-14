@@ -21,6 +21,7 @@ if (isset($_SESSION['following'])) {
 			$loadLikes = $loadLikes -> fetchAll(PDO::FETCH_ASSOC);
 			if (!$loadLikes) {
 				$count = 0;
+				$isLiked = false;
 			} else {
 				$count = count($loadLikes);
 				foreach ($loadLikes as $like) {
@@ -30,8 +31,8 @@ if (isset($_SESSION['following'])) {
 						$isLiked = false;
 					}
 				}
-				if (isset($isLiked)) { $userPost['is_liked'] = $isLiked; }
 			}
+			$userPost['is_liked'] = $isLiked;
 			
 
 			$userPost['likes'] = $count;
@@ -61,13 +62,16 @@ if (isset($_SESSION['following'])) {
 							'likes' => $post['likes'],
 							'is_liked' => $post['is_liked']
 						];
-						var_dump($_SESSION['posts']);
 					}
 				}
 			}
 		}
 	}
-die;
+
+	if (isset($_SESSION['like_post_id'])) {
+		redirect('../../index.php#' . $_SESSION['like_post_id']);
+	}
+	
 	redirect('../../index.php');
 }
 

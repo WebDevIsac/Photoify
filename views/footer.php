@@ -5,7 +5,7 @@
 <?php if (isset($_SESSION['user'])): ?>
 		<ul class="nav-bar">
 			<li class="nav-item">
-				<a href="../index.php" class="nav-link"><img src="assets/images/svg-images/home-50px.svg" alt=""></a>
+				<a href="../app/follows/load.php" class="nav-link"><img src="assets/images/svg-images/home-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
 				<a href="search.php" class="nav-link"><img src="assets/images/svg-images/search-50px.svg" alt=""></a>
