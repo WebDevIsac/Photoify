@@ -4,11 +4,45 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	height: 400px;
+	height: 80vh;
+	width: 100%;
 }
 
 .profile-container img {
 	width: 300px;
 	height: 300px;
 	border-radius: 50%;
+}
+
+.profile-container .user-counts {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	height: 60px;
+	width: 80vw;
+	margin: 20px 0;
+	text-align: center;
+	border: 2px solid grey;
+}
+
+.profile-container .user-counts div {
+	width: 33%;
+	height: 60px;
+}
+
+.profile-container .user-counts .posts {
+	padding: 5px;
+}
+
+.profile-container .user-counts .followers {
+	border: 2px solid grey;	
+}
+
+.profile-container .user-counts div a {
+	text-decoration: none;
+	color: black;
+	height: 60px;
+	display: block;
+	padding: 5px;
 }

@@ -26,7 +26,10 @@
 				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
 			</div>
 			<div class="text-container">
-				<p class="likes"><?php echo $post['likes']; ?></p>
+				<div class="like-container">
+					<p class="likes"><?php echo $post['likes']; ?></p>
+					<a href="app/posts/updateLike.php?post=<?php echo $post['post_id']; ?>" class="like-button">Like</a>
+				</div>
 				<p class="date"><?php echo $post['timestamp']; ?></p>
 				<p class="caption"><?php echo $post['caption']; ?></p>
 			</div>

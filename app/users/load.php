@@ -19,9 +19,8 @@ if (isset($_GET['current-profile'])) {
 		'firstname' => $user['firstname'],
 		'lastname' => $user['lastname'],
 		'profile_pic' => $user['profile_pic_url'],
-		'caption' => 'Hej mitt namn är ' . $user['username'],
+		'caption' => $user['caption'],
 		'bio' => $user['bio'],
-		'posts' => []
 	];
 
 	redirect('../posts/loadProfile.php');

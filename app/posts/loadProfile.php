@@ -29,7 +29,7 @@ if (isset($_SESSION['current-profile'])) {
 		}
 	}
 
-	redirect('../../profile.php');
+	redirect('../follows/loadProfile.php');
 }
 
 

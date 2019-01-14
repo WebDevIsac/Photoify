@@ -1,10 +1,26 @@
 <?php require __DIR__.'/views/header.php'; 
 
-	if ($_SESSION['current-profile']) {$user = $_SESSION['current-profile']; 
-		if ($_SESSION['current-profile']['user_id'] === $_SESSION['user']['user_id']) {
+	if (isset($_SESSION['current-profile'])) {$user = $_SESSION['current-profile'];
+		if ($user['user_id'] == $_SESSION['user']['user_id']) {
 			$buttonText = 'Edit Profile'; 
 		} else {
 			$buttonText = 'Send Message'; 
+		}
+
+		if (isset($user['posts'])) {
+			$postsCount = count($user['posts']);
+		} else {
+			$postsCount = 0;
+		}
+		if (isset($user['followers'])) {
+			$followersCount = count($user['posts']);
+		} else {
+			$followersCount = 0;
+		}
+		if (isset($user['following'])) {
+			$followingCount = count($user['posts']);
+		} else {
+			$followingCount = 0;
 		}
 	}
 
@@ -17,12 +33,23 @@
 		<div class="bio">
 			<p><?php echo $user['caption']; ?></p>
 		</div>
-		<div class="info">
+		<div class="user-counts">
 			<div class="posts">
-				
+				<h3>Posts</h3>
+				<h3><?php echo $postsCount; ?></h3>
 			</div>
-			<div class="followers"></div>
-			<div class="following"></div>
+			<div class="followers">
+				<a href="followers.php">
+					<h3>Followers</h3>
+					<h3><?php echo $followersCount; ?></h3>
+				</a>
+			</div>
+			<div class="following">
+				<a href="following.php">
+					<h3>Following</h3>
+					<h3><?php echo $followingCount; ?></h3>
+				</a>
+			</div>			
 		</div>
 	</div>
 
