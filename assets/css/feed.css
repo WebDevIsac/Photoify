@@ -1,0 +1,65 @@
+.feed {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.post {
+	padding: 30px 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.user-container .user-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	cursor: pointer;
+
+}
+
+.user-container img, .user-container p {
+	margin: 0 5px;
+}
+
+.user-container img {
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+}
+
+.image-container {
+	padding: 20px 0;
+}
+
+.image-container img {
+	width: 90vw;
+}
+
+.text-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 50px auto;
+	grid-row-gap: 10px;
+	align-items: center;
+}
+
+.text-container .like-info {
+	display: none;
+}
+
+.text-container .like-button {
+	text-decoration: none;
+	padding: 16px 0;
+	text-align: center;
+	background-image: url('../images/svg-images/heart-lines.svg');
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 50px;
+}
+
+.text-container .caption {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}

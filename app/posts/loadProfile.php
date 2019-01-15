@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
+// Update like for current profile
 if (isset($_GET['post'])) {
 	$postId = filter_var($_GET['post'], FILTER_SANITIZE_NUMBER_INT);
 

@@ -9,7 +9,7 @@ if (isset($_POST['username'], $_POST['password'])) {
     $loginStatement = $pdo -> query('SELECT * FROM users');
     $users = $loginStatement -> fetchAll(PDO::FETCH_ASSOC);
 
-
+	unset($_SESSION['user']);
     foreach ($users as $user) {
         if ($username === $user['username']) {
             if (password_verify($password, $user['password'])) {

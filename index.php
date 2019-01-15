@@ -4,7 +4,6 @@
 	if (!isset($_SESSION['user'])) {
 		redirect('login.php');
 	}
-
 	?>
 
 <div class="feed">
@@ -18,22 +17,17 @@
 	?>
 		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
-				<form action="app/users/load.php" method="get">
-					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $post['user_id']; ?>">
-					<div class="user-info" onClick="javascript:this.parentNode.submit()">
-						<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $post['profile_pic']; ?>" alt="">
-						<p><?php echo $post['username']; ?></p>
-					</div>
-				</form>
+				<a class="user-info" href="app/users/load.php?current-profile=<?php echo $post['user_id']; ?>">
+					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $post['profile_pic']; ?>" alt="">
+					<p><?php echo $post['username']; ?></p>
+				</a>
 			</div>
 			<div class="image-container">
 				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
 			</div>
 			<div class="text-container">
-				<div class="like-container">
-					<p class="likes"><?php echo $post['likes']; ?> likes</p>
-					<a href="app/posts/updateLike.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $likeButtonText; ?></a>
-				</div>
+				<p class="like-info"><?php echo $likeButtonText ?></p>
+				<a href="app/posts/updateLike.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $post['likes']; ?></a>
 				<p class="date"><?php echo $post['timestamp']; ?></p>
 				<p class="caption"><?php echo $post['caption']; ?></p>
 			</div>

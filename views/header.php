@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="assets/css/header.css">
 	<link rel="stylesheet" href="assets/css/profile.css">
 	<link rel="stylesheet" href="assets/css/add.css">
+	<link rel="stylesheet" href="assets/css/feed.css">
     <title>Photoify</title>
 </head>
 <body>

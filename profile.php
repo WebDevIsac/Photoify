@@ -1,8 +1,9 @@
 <?php require __DIR__.'/views/header.php'; 
 
+	unset($_SESSION['like_post_id']); 
 	if (isset($_SESSION['current-profile'])) {$user = $_SESSION['current-profile'];
-		unset($_SESSION['like_post_id']); 
 		if ($user['user_id'] == $_SESSION['user']['user_id']) {
+			$myProfile = true;
 			$buttonText = 'Edit Profile'; 
 		} else {
 			$buttonText = 'Send Message'; 
@@ -14,12 +15,12 @@
 			$postsCount = 0;
 		}
 		if (isset($user['followers'])) {
-			$followersCount = count($user['posts']);
+			$followersCount = count($user['followers']);
 		} else {
 			$followersCount = 0;
 		}
 		if (isset($user['following'])) {
-			$followingCount = count($user['posts']);
+			$followingCount = count($user['following']);
 		} else {
 			$followingCount = 0;
 		}
@@ -68,16 +69,19 @@
 					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $user['profile_pic']; ?>" alt="">
 					<p><?php echo $user['username']; ?></p>
 				</div>
-				</form>
+				<?php if (isset($myProfile)): ?>
+				<div class="edit-container"></div>
+					<a href="" class="edit-button">Edit</a>
+					<a href="app/posts/delete.php?delete=<?php echo $post['post_id'] . ' ' . $post['user_id']; ?>" class="delete-button">Delete</a>
+				</div>
+				<?php endif; ?>
 			</div>
 			<div class="image-container">
 				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
 			</div>
 			<div class="text-container">
-				<div class="like-container">
-					<p class="likes"><?php echo $post['likes']; ?> likes</p>
-					<a href="app/posts/loadProfile.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $likeButtonText; ?></a>
-				</div>
+				<p class="like-info"><?php echo $likeButtonText ?></p>
+				<a href="app/posts/loadProfile.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $post['likes']; ?></a>
 				<p class="date"><?php echo $post['timestamp']; ?></p>
 				<p class="caption"><?php echo $post['caption']; ?></p>
 			</div>

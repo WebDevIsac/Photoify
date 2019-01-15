@@ -3,6 +3,14 @@
 	flex-direction: column;
 }
 
+.upload-image {
+
+}
+
+.upload-input {
+	display: none;
+}
+
 .add-form .image {
 	height: 300px;
 	width: 300px;

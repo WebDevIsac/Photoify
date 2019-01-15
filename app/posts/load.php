@@ -7,6 +7,7 @@ if (isset($_SESSION['following'])) {
 	$loadAllUsers = $pdo -> query('SELECT * FROM users');
 	$loadAllUsers = $loadAllUsers -> fetchAll(PDO::FETCH_ASSOC);
 
+	unset($_SESSION['posts']);
 	foreach ($_SESSION['following'] as $follow) {
 
 		$loadPosts = $pdo -> prepare('SELECT * FROM posts WHERE user_id = :user_id');

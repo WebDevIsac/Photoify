@@ -17,10 +17,9 @@
 				<a href="news.php" class="nav-link"><img src="assets/images/svg-images/news-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
-				<form action="app/users/load.php" method="get">
-					<input type="hidden" id="current-profile" name="current-profile" value="<?php echo $_SESSION['user']['user_id']; ?>">
-					<img src="assets/images/svg-images/avatar-50px.svg" alt="" onClick="javascript:this.parentNode.submit()">
-				</form>	
+				<a href="app/users/load.php?current-profile=<?php echo $_SESSION['user']['user_id']; ?>">
+					<img src="assets/images/svg-images/avatar-50px.svg" alt="">
+				</a>
 			</li>
 		</ul>
 	<?php elseif ($_SERVER['PHP_SELF'] === '/explore.php'): ?>

@@ -13,6 +13,7 @@ if (isset($_SESSION['user'])) {
 	$stmtFollowing = $stmtFollowing -> fetchAll(PDO::FETCH_ASSOC);
 
 	if (count($stmtFollowing) > 0) {
+		unset($_SESSION['following']);
 		foreach ($stmtFollowing as $follow) {
 			$loadFollowing = $pdo -> prepare('SELECT user_id, username FROM users WHERE user_id = :user_id');
 			$loadFollowing -> bindParam(':user_id', $follow['follow_id'], PDO::PARAM_INT);
@@ -27,13 +28,14 @@ if (isset($_SESSION['user'])) {
 			}
 		}
 	}
-
+	
 	$stmtFollowers = $pdo -> prepare('SELECT * FROM followers WHERE user_id = :user_id');
 	$stmtFollowers -> bindParam(':user_id', $userId, PDO::PARAM_INT);
 	$stmtFollowers -> execute();
 	$stmtFollowers = $stmtFollowers -> fetchAll(PDO::FETCH_ASSOC);
-
+	
 	if (count($stmtFollowers) > 0) {
+		unset($_SESSION['followers']);
 		foreach ($stmtFollowers as $follower) {
 			$loadFollowers = $pdo -> prepare('SELECT user_id, username FROM users WHERE user_id = :user_id');
 			$loadFollowers -> bindParam(':user_id', $follower['follower_id'], PDO::PARAM_INT);
