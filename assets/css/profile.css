@@ -4,7 +4,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	min-height: 90vh;
+	min-height: 100vh;
 	width: 100%;
 }
 
@@ -46,10 +46,6 @@
 	height: 60px;
 }
 
-.profile-container .user-counts .posts {
-	padding: 5px;
-}
-
 .profile-container .user-counts .followers {
 	border: 2px solid var(--border-color);	
 }
@@ -75,3 +71,9 @@
 	padding: 10px;
 	border: 2px solid var(--border-color);
 }
+
+.edit-container a:hover {
+	color: #F4F4F4;
+	background-color: var(--background-color);
+}
+

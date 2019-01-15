@@ -4,15 +4,22 @@ require __DIR__.'/../autoload.php';
 
 $delete = explode(" ", filter_var($_GET['delete'], FILTER_SANITIZE_STRING));
 
-$postId = (int)$delete[0];
-$userId = (int)$delete[1];
-$loggerInUser = $_SESSION['user']['user_id'];
+$postID = (int)$delete[0];
+$userID = (int)$delete[1];
+$imageURL = $delete[2];
+$imagePath = __DIR__.'/../../assets/posts/' . $imageURL;
+$loggedInUser = $_SESSION['user']['user_id'];
 
-if ($userId === $loggerInUser) {
+if ($userID === $loggedInUser) {
 	$deletePost = $pdo -> prepare('DELETE FROM posts WHERE post_id = :post_id AND user_id = :user_id');
-	$deletePost -> bindParam(':post_id', $postId, PDO::PARAM_INT);
-	$deletePost -> bindParam(':user_id', $loggerInUser, PDO::PARAM_INT);
+	$deletePost -> bindParam(':post_id', $postID, PDO::PARAM_INT);
+	$deletePost -> bindParam(':user_id', $loggedInUser, PDO::PARAM_INT);
 	$deletePost -> execute();
 
+	if (is_file($imagePath))
+	{
+		unlink($imagePath);
+	}
+	
 	redirect('loadProfile.php');
 }

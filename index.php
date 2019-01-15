@@ -8,7 +8,6 @@
 
 <div class="feed">
 	<?php 
-	$filePath = 'assets/images/profile-pictures/';
 	
 	foreach ($_SESSION['posts'] as $post): 
 		if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
@@ -36,7 +35,5 @@
 		endforeach; 
 	?>
 </div> <!-- feed -->
-
-<a href="app/users/logout.php" class="logout">Logout</a>
 
 <?php require __DIR__.'/views/footer.php'; ?>

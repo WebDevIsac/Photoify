@@ -4,15 +4,18 @@ require __DIR__.'/../autoload.php';
 $image = $_FILES['image'];
 $type = $image['type'];
 $size = $image['size'];
-if ($type !== 'image/jpeg' && $type !== 'image/gif' && $type !== 'image/png') 
+
+unset($_SESSION['file-error']);
+
+if ($type !== 'image/jpeg' && $type !== 'image/jpg' && $type !== 'image/gif' && $type !== 'image/png') 
 {
-	echo 'Wrong file format';
-	die;
+	$_SESSION['file-error'] = 'Wrong file format';
+	redirect('../../add.php');
 } 
-else if ($size > 3 * MB) 
+else if ($size > 5 * MB) 
 {
-	echo 'File to big';
-	die;
+	$_SESSION['file-error'] = 'File to big';
+	redirect('../../add.php');
 }
 
 $imagePath = __DIR__.'/../../assets/posts/';

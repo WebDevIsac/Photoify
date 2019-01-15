@@ -4,14 +4,14 @@ require __DIR__.'/../autoload.php';
 
 if (isset($_SESSION['following'])) {
 
+	unset($_SESSION['posts']);
 	$loadAllUsers = $pdo -> query('SELECT * FROM users');
 	$loadAllUsers = $loadAllUsers -> fetchAll(PDO::FETCH_ASSOC);
 
-	unset($_SESSION['posts']);
 	foreach ($_SESSION['following'] as $follow) {
 
 		$loadPosts = $pdo -> prepare('SELECT * FROM posts WHERE user_id = :user_id');
-		$loadPosts -> bindParam(':user_id', $follow['follow_id'], PDO::PARAM_INT);
+		$loadPosts -> bindParam(':user_id', $follow['user_id'], PDO::PARAM_INT);
 		$loadPosts -> execute();
 		$loadPosts = $loadPosts -> fetchAll(PDO::FETCH_ASSOC);
 
@@ -33,9 +33,8 @@ if (isset($_SESSION['following'])) {
 					}
 				}
 			}
-			$userPost['is_liked'] = $isLiked;
-			
 
+			$userPost['is_liked'] = $isLiked;
 			$userPost['likes'] = $count;
 
 			$posts[] = $userPost;
@@ -44,7 +43,6 @@ if (isset($_SESSION['following'])) {
 	}
 	
 	rsort($dates);
-	unset($_SESSION['posts']);
 
 	foreach ($dates as $date) {
 		foreach ($loadAllUsers as $user) {
@@ -75,5 +73,7 @@ if (isset($_SESSION['following'])) {
 	
 	redirect('../../index.php');
 }
+$userID = $_SESSION['user']['user_id'];
+redirect("../users/load.php?current-profile=$userID");
 
 ?>

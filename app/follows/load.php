@@ -4,16 +4,16 @@ require __DIR__.'/../autoload.php';
 
 if (isset($_SESSION['user'])) {
 
-	$userId = $_SESSION['user']['user_id'];
+	$userID = $_SESSION['user']['user_id'];
 
 
 	$stmtFollowing = $pdo -> prepare('SELECT * FROM following WHERE user_id = :user_id');
-	$stmtFollowing -> bindParam(':user_id', $userId, PDO::PARAM_INT);
+	$stmtFollowing -> bindParam(':user_id', $userID, PDO::PARAM_INT);
 	$stmtFollowing -> execute();
 	$stmtFollowing = $stmtFollowing -> fetchAll(PDO::FETCH_ASSOC);
 
+	unset($_SESSION['following']);
 	if (count($stmtFollowing) > 0) {
-		unset($_SESSION['following']);
 		foreach ($stmtFollowing as $follow) {
 			$loadFollowing = $pdo -> prepare('SELECT user_id, username FROM users WHERE user_id = :user_id');
 			$loadFollowing -> bindParam(':user_id', $follow['follow_id'], PDO::PARAM_INT);
@@ -22,7 +22,7 @@ if (isset($_SESSION['user'])) {
 			$loadFollowing = $loadFollowing -> fetchAll(PDO::FETCH_ASSOC);
 			foreach ($loadFollowing as $loadFollow) {
 				$_SESSION['following'][] = [
-					'follow_id' => $loadFollow['user_id'],
+					'user_id' => $loadFollow['user_id'],
 					'username' => $loadFollow['username']
 				];
 			}
@@ -30,7 +30,7 @@ if (isset($_SESSION['user'])) {
 	}
 	
 	$stmtFollowers = $pdo -> prepare('SELECT * FROM followers WHERE user_id = :user_id');
-	$stmtFollowers -> bindParam(':user_id', $userId, PDO::PARAM_INT);
+	$stmtFollowers -> bindParam(':user_id', $userID, PDO::PARAM_INT);
 	$stmtFollowers -> execute();
 	$stmtFollowers = $stmtFollowers -> fetchAll(PDO::FETCH_ASSOC);
 	
@@ -45,7 +45,7 @@ if (isset($_SESSION['user'])) {
 			foreach ($loadFollowers as $loadFollower) {
 				
 				$_SESSION['followers'][] = [
-					'follow_id' => $loadFollower['user_id'],
+					'user_id' => $loadFollower['user_id'],
 					'username' => $loadFollower['username']
 				];
 			}
