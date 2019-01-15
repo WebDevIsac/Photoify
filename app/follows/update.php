@@ -4,10 +4,10 @@ require __DIR__.'/../autoload.php';
 
 if (isset($_SESSION['current-profile'], $_SESSION['user'])) {
 
+	$user = $_SESSION['user'];
+	$profile = $_SESSION['current-profile'];
 	if (isset($_SESSION['following'])) {
 		foreach ($_SESSION['following'] as $follow) {
-			$user = $_SESSION['user'];
-			$profile = $_SESSION['current-profile'];
 			if ($follow['user_id'] == $_SESSION['current-profile']['user_id']) {
 				
 				$removeFollowing = $pdo -> prepare('DELETE FROM following WHERE user_id = :user_id AND follow_id = :follow_id');
@@ -46,5 +46,5 @@ if (isset($_SESSION['current-profile'], $_SESSION['user'])) {
 		$addFollower -> execute();
 	}
 
-	redirect('load.php');
+	redirect('loadProfile.php');
 }

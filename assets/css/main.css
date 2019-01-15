@@ -22,11 +22,9 @@
 .form-container {
 	text-align: center;
 	padding-top: 10vh;
-	height: 85vh;
-}
-
-.form-container {
-	padding: 40px;
+	min-height: 70vh;
+	max-height: 90vh;
+	padding: 10px 40px;
 	font-size: 24px;
 }
 

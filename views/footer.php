@@ -1,8 +1,8 @@
 </div> <!-- container -->
 
 
-<footer>
 <?php if (isset($_SESSION['user'])): ?>
+<footer>
 		<ul class="nav-bar">
 			<li class="nav-item">
 				<a href="../app/follows/load.php" class="nav-link"><img src="assets/images/svg-images/home-50px.svg" alt=""></a>
@@ -24,12 +24,8 @@
 				</a>
 			</li>
 		</ul>
-	<?php elseif ($_SERVER['PHP_SELF'] === '/explore.php'): ?>
-	<h1>Back to login page</h1>
-	<?php else: ?>
-		<a href="explore.php">Explore</a>
-	<?php endif; ?>
-</footer>
+	</footer>
+<?php endif; ?>
 
 <script src="assets/script/script.js"></script>
 </body>
