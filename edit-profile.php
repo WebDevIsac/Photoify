@@ -1,6 +1,6 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<form class="edit-profile-form" action="app/users/edit.php" method="post" enctype="multipart/form-data">
+<form class="edit-profile-form" action="app/users/update.php" method="post" enctype="multipart/form-data">
 	<h1>Edit Profile</h1>
 	<img src="assets/images/profile-pictures/<?php echo $_SESSION['user']['profile_pic']; ?>" class="upload-image" alt="">
 	<input type="file" accept="image/*" name="image" class="upload-input" onchange="changeFile(event)">

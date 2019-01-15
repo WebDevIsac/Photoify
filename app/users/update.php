@@ -5,12 +5,26 @@ require __DIR__.'/../autoload.php';
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 
-	die(var_dump($_FILES['image']));
-	
-	if (isset($_POST['image'])) {
-		die(var_dump($_POST['image']));
+	if (isset($_FILES['image'])) {
+		$image = $_FILES['image'];
+		$type = $image['type'];
+		$size = $image['size'];
+		
+		if ($type === 'image/jpg' || $type === 'image/png' || $type === 'image/gif' && $size < 2 * MB) 
+		{
+			$imagePath = __DIR__.'/../../assets/images/profile-pictures/';
+			$imageName =  uniqid() . "-$date-" . $image['name'];
+			
+			move_uploaded_file($image['tmp_name'], $imagePath . $imageName);
+			
+			$insertImage = $pdo -> prepare('UPDATE users SET profile_pic_url = :profile_pic_url WHERE user_id = :user_id');
+			$insertImage -> bindParam(':profile_pic_url', $imageName, PDO::PARAM_STR);
+			$insertImage -> bindParam(':user_id', $user['user_id'], PDO::PARAM_INT);
+			$insertImage -> execute();
+			
+			$_SESSION['user']['profile_pic'] = $imageName;
+		}
 	}
-
 
 
 
@@ -24,6 +38,9 @@ if (isset($_SESSION['user'])) {
 
 		$_SESSION['user']['email'] = $email;
 	}
+
+
+
 	if (isset($_POST['old-password'], $_POST['new-password'])) {
 		$checkPassword = $pdo -> prepare('SELECT password FROM users WHERE user_id = :user_id');
 		$checkPassword -> bindParam(':user_id', $user['user_id'], PDO::PARAM_INT);
@@ -38,6 +55,8 @@ if (isset($_SESSION['user'])) {
 			$insertPassword -> execute();
 		}
 	}
+
+
 
 	if (isset($_POST['bio']) && filter_var($_POST['bio'], FILTER_SANITIZE_STRING) !== $user['bio']) {
 		$bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);

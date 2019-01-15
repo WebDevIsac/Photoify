@@ -73,7 +73,7 @@
 				</div> <!-- user-info -->
 				<?php if (isset($myProfile)): ?>
 				<div class="edit-container">
-					<a href="" class="edit-button">Edit</a>
+					<a href="edit-post.php?edit=<?php echo $post['post_id']; ?>" class="edit-button">Edit</a>
 					<a href="app/posts/delete.php?delete=<?php echo $post['post_id'] . ' ' . $post['user_id']; ?>" class="delete-button">Delete</a>
 				</div> <!-- edit-container -->
 				<?php endif; ?>

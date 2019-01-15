@@ -11,7 +11,8 @@
 .profile-container img {
 	width: 300px;
 	height: 300px;
-	border-radius: 50%;
+	border-radius: 100%;
+	border: 2px solid var(--border-color);
 }
 
 .profile-container .user-button a {
@@ -24,6 +25,10 @@
 	background-color: var(--background-color);
 }
 
+.profile-container .bio {
+	width: 80vw;
+}
+
 .profile-container .user-counts {
 	display: flex;
 	flex-direction: row;
@@ -33,7 +38,7 @@
 	width: 80vw;
 	margin: 20px 0;
 	text-align: center;
-	border: 2px solid grey;
+	border: 2px solid var(--border-color);
 }
 
 .profile-container .user-counts div {
@@ -46,7 +51,7 @@
 }
 
 .profile-container .user-counts .followers {
-	border: 2px solid grey;	
+	border: 2px solid var(--border-color);	
 }
 
 .profile-container .user-counts div a {
@@ -63,4 +68,10 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.edit-container a {
+	height: 20px;
+	padding: 10px;
+	border: 2px solid var(--border-color);
 }
