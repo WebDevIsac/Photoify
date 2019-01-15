@@ -1,7 +1,7 @@
 <?php 
 
 require __DIR__.'/../autoload.php';
-$image = $_FILES['photo'];
+$image = $_FILES['image'];
 $type = $image['type'];
 $size = $image['size'];
 if ($type !== 'image/jpeg' && $type !== 'image/gif' && $type !== 'image/png') {
@@ -12,10 +12,10 @@ if ($type !== 'image/jpeg' && $type !== 'image/gif' && $type !== 'image/png') {
 	die;
 }
 
-$photoPath = __DIR__.'/../../assets/posts/';
-$photoName =  uniqid() . "-$date-" . $image['name'];
+$imagePath = __DIR__.'/../../assets/posts/';
+$imageName =  uniqid() . "-$date-" . $image['name'];
 
-move_uploaded_file($image['tmp_name'], $photoPath . $photoName);
+move_uploaded_file($image['tmp_name'], $imagePath . $imageName);
 
 $userId = $_SESSION['user']['user_id'];
 $username = $_SESSION['user']['username'];

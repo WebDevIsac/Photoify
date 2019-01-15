@@ -5,6 +5,9 @@ const likeInfo = document.querySelectorAll('.text-container .like-info');
 const uploadImage = document.querySelector('.add-form .upload-image');
 const uploadInput = document.querySelector('.add-form .upload-input');
 
+const changeImage = document.querySelector('.edit-profile-form .upload-image');
+const changeInput = document.querySelector('.edit-profile-form .upload-input');
+
 
 
 for (let i = 0; i < postPhoto.length; i++) {
@@ -16,17 +19,25 @@ for (let i = 0; i < postPhoto.length; i++) {
 	}
 }
 
-// uploadImage.addEventListener('click', () => {
-// 	uploadInput.click();
-// });
+if (document.URL.indexOf("add.php") >= 0){ 
+	
+	uploadImage.addEventListener('click', () => {
+		uploadInput.click();
+	});
+} 
 
-// window.onload = () => {
+else if (document.URL.indexOf("edit-profile.php") >= 0) {
+	
+	changeImage.addEventListener('click', () => {
+		changeInput.click();
+	});
+}
 
-// 	if (uploadInput.value) {
-// 		console.log('Input has value');
-		
-// 		uploadImage.scroll(uploadInput.value);
-// 	}
-// }
+const uploadFile = function(e) {
+	uploadImage.src = URL.createObjectURL(e.target.files[0]);
+};
 
 
+const changeFile = function(e) {
+	changeImage.src = URL.createObjectURL(e.target.files[0]);
+};

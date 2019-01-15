@@ -1,0 +1,30 @@
+@media screen and (min-width: 780px) {	
+
+	.post {
+		width: 70vw;
+	}
+
+	.image-container, {
+		width: 70vw;
+		align-self: center;
+	}
+	.image-container img {
+		width: 70vw;
+	}
+}
+
+
+@media screen and (min-width: 1400px) {	
+
+	.post {
+		width: 50vw;
+	}
+
+	.image-container, {
+		width: 50vw;
+		align-self: center;
+	}
+	.image-container img {
+		width: 50vw;
+	}
+}

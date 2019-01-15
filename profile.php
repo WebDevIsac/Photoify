@@ -4,9 +4,11 @@
 	if (isset($_SESSION['current-profile'])) {$user = $_SESSION['current-profile'];
 		if ($user['user_id'] == $_SESSION['user']['user_id']) {
 			$myProfile = true;
-			$buttonText = 'Edit Profile'; 
+			$buttonText = 'Edit Profile';
+			$buttonLink = 'edit-profile.php'; 
 		} else {
-			$buttonText = 'Send Message'; 
+			$buttonText = 'Follow'; 
+			$buttonLink = 'follow.php'; 
 		}
 
 		if (isset($user['posts'])) {
@@ -31,9 +33,9 @@
 	<div class="profile-container">
 		<img src="assets/images/profile-pictures/<?php echo $user['profile_pic']; ?>" alt="">
 		<h3><?php echo $user['username']; ?></h3>
-		<div class="user-button"><?php echo $buttonText; ?></div>
+		<div class="user-button"><a href="<?php echo $buttonLink; ?>"><?php echo $buttonText; ?></a></div>
 		<div class="bio">
-			<p><?php echo $user['caption']; ?></p>
+			<p><?php echo $user['bio']; ?></p>
 		</div>
 		<div class="user-counts">
 			<div class="posts">
@@ -68,23 +70,23 @@
 				<div class="user-info">
 					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $user['profile_pic']; ?>" alt="">
 					<p><?php echo $user['username']; ?></p>
-				</div>
+				</div> <!-- user-info -->
 				<?php if (isset($myProfile)): ?>
-				<div class="edit-container"></div>
+				<div class="edit-container">
 					<a href="" class="edit-button">Edit</a>
 					<a href="app/posts/delete.php?delete=<?php echo $post['post_id'] . ' ' . $post['user_id']; ?>" class="delete-button">Delete</a>
-				</div>
+				</div> <!-- edit-container -->
 				<?php endif; ?>
-			</div>
+			</div> <!-- user-container -->
 			<div class="image-container">
 				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
-			</div>
+			</div> <!-- image-container -->
 			<div class="text-container">
 				<p class="like-info"><?php echo $likeButtonText ?></p>
 				<a href="app/posts/loadProfile.php?post=<?php echo $post['post_id']; ?>" class="like-button"><?php echo $post['likes']; ?></a>
 				<p class="date"><?php echo $post['timestamp']; ?></p>
 				<p class="caption"><?php echo $post['caption']; ?></p>
-			</div>
+			</div> <!-- image-container -->
 		</div> <!-- profile-post -->
 		<?php endforeach; ?>
 	</div> <!-- profile-feed -->

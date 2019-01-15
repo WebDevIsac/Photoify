@@ -4,7 +4,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	height: 80vh;
+	min-height: 90vh;
 	width: 100%;
 }
 
@@ -12,6 +12,16 @@
 	width: 300px;
 	height: 300px;
 	border-radius: 50%;
+}
+
+.profile-container .user-button a {
+	padding: 10px;
+	border: 3px solid var(--border-color);
+}
+
+.profile-container .user-button a:hover {
+	color: #F4F4F4;
+	background-color: var(--background-color);
 }
 
 .profile-container .user-counts {

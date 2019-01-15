@@ -48,12 +48,12 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 
     $addUser -> execute();
 
-    $getUser = $pdo -> prepare('SELECT * FROM users WHERE username = :username');
-    $getUser -> bindParam(':username', $username, PDO::PARAM_STR);
+    $newUser = $pdo -> prepare('SELECT * FROM users WHERE username = :username');
+    $newUser -> bindParam(':username', $username, PDO::PARAM_STR);
 
-    $getUser -> execute();
+    $newUser -> execute();
 
-    $newUser = $getUser -> FETCH(PDO::FETCH_ASSOC);
+    $newUser = $newUser -> FETCH(PDO::FETCH_ASSOC);
 
     $_SESSION['user'] = 
 		[
