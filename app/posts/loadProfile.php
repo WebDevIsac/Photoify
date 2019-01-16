@@ -68,7 +68,7 @@ if (isset($_SESSION['current-profile'])) {
 					$_SESSION['current-profile']['posts'][] = 
 					[
 						'post_id' => $post['post_id'],
-						'photo_url' => $post['photo_url'],
+						'image' => $post['image'],
 						'username' => $post['username'],
 						'user_id' => $post['user_id'],
 						'timestamp' => $date,

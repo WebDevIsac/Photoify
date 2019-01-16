@@ -20,7 +20,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 					'email' => $user['email'],
 					'firstname' => $user['firstname'],
 					'lastname' => $user['lastname'],
-					'profile_pic' => $user['profile_pic_url'],
+					'profile_image' => $user['profile_image'],
 					'bio' => $user['bio']
 				];
 				

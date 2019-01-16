@@ -23,7 +23,7 @@ if (isset($_SESSION['current-profile'])) {
 	$loadFollowers -> execute();
 	$followers = $loadFollowers -> fetchAll(PDO::FETCH_ASSOC);
 	unset($_SESSION['current-profile']['followers']);
-	if (count($following) > 0) {
+	if (count($followers) > 0) {
 		foreach ($followers as $follower) {	
 			$_SESSION['current-profile']['followers'][] = 
 			[

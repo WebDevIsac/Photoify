@@ -27,16 +27,19 @@ $userId = $_SESSION['user']['user_id'];
 $username = $_SESSION['user']['username'];
 $caption = filter_var($_POST['caption'], FILTER_SANITIZE_STRING);
 
-$storePost = $pdo -> prepare("INSERT INTO posts(user_id, photo_url, caption, username, timestamp) VALUES(:user_id, :photo_url, :caption, :username, DateTime('now'))");
-
+$storePost = $pdo -> prepare("INSERT INTO posts(user_id, image, caption, username, timestamp) VALUES(:user_id, :image, :caption, :username, DateTime('now'))");
 $storePost -> bindParam(':user_id', $userId, PDO::PARAM_INT);
-$storePost -> bindParam(':photo_url', $imageName, PDO::PARAM_STR);
+$storePost -> bindParam(':image', $imageName, PDO::PARAM_STR);
 $storePost -> bindParam(':caption', $caption, PDO::PARAM_STR);
 $storePost -> bindParam(':username', $username, PDO::PARAM_STR);
 
 $storePost -> execute();
 
-redirect('../../index.php');
+if (isset($_SESSION['posts'])) {
+	redirect('../../index.php');
+} 
+
+redirect('loadAllPosts.php');
 
 
 

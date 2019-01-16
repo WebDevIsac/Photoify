@@ -43,7 +43,7 @@
 	
 	<div class="profile-container">
 		<h3><?php echo $user['username']; ?></h3>
-		<img src="assets/images/profile-pictures/<?php echo $user['profile_pic']; ?>" alt="">
+		<img src="assets/images/profile-pictures/<?php echo $user['profile_image']; ?>" alt="">
 		<div class="user-button"><a href="<?php echo $buttonLink; ?>"><?php echo $buttonText; ?></a></div>
 		<div class="bio">
 			<p><?php echo $user['bio']; ?></p>
@@ -74,6 +74,7 @@
 
 	<div class="feed">
 		<?php 
+		if (isset($user['posts'])):
 		foreach ($user['posts'] as $post): 
 			if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
 			else { $likeButtonText = 'Like'; }
@@ -81,18 +82,18 @@
 		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
 				<div class="user-info">
-					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $user['profile_pic']; ?>" alt="">
+					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $user['profile_image']; ?>" alt="">
 					<p><?php echo $user['username']; ?></p>
 				</div> <!-- user-info -->
 				<?php if (isset($myProfile)): ?>
 				<div class="edit-container">
 					<a href="edit-post.php?edit=<?php echo $post['post_id']; ?>" class="edit-button">Edit</a>
-					<a href="app/posts/delete.php?delete=<?php echo $post['post_id'] . ' ' . $post['user_id'] . ' ' . $post['photo_url']; ?>" class="delete-button">Delete</a>
+					<a href="app/posts/delete.php?delete=<?php echo $post['post_id'] . ' ' . $post['user_id'] . ' ' . $post['image']; ?>" class="delete-button">Delete</a>
 				</div> <!-- edit-container -->
 				<?php endif; ?>
 			</div> <!-- user-container -->
 			<div class="image-container">
-				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
+				<img class="image" src="assets/posts/<?php echo $post['image']; ?>" alt="">
 			</div> <!-- image-container -->
 			<div class="text-container">
 				<p class="like-info"><?php echo $likeButtonText ?></p>
@@ -103,5 +104,8 @@
 		</div> <!-- profile-post -->
 		<?php endforeach; ?>
 	</div> <!-- profile-feed -->
+	<?php else: ?>
+	<h1>No posts uploaded</h1>
+	<?php endif; ?>
 
 <?php require __DIR__.'/views/footer.php'; ?>

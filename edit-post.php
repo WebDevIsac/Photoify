@@ -7,7 +7,7 @@ foreach ($_SESSION['current-profile']['posts'] as $post):
 ?>
 	<form class="add-form" action="app/posts/update.php?post=<?php echo $post['post_id']; ?>" method="post" enctype="multipart/form-data">
 		<h1>Edit Post</h1>
-		<img src="assets/posts/<?php echo $post['photo_url']; ?>" class="upload-image" alt="">
+		<img src="assets/posts/<?php echo $post['image']; ?>" class="upload-image" alt="">
 		<label for="caption">Caption</label>
 		<textarea class="caption-input" name="caption" id="caption" cols="30" rows="10"><?php echo $post['caption']; ?></textarea>
 		<button type="submit">Done</button>

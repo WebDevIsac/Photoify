@@ -3,7 +3,7 @@
 <form class="edit-profile-form" action="app/users/update.php" method="post" enctype="multipart/form-data">
 	<h1>Edit Profile</h1>
 	<p>Change profile image</p>
-	<img src="assets/images/profile-pictures/<?php echo $_SESSION['user']['profile_pic']; ?>" class="upload-image" alt="">
+	<img src="assets/images/profile-pictures/<?php echo $_SESSION['user']['profile_image']; ?>" class="upload-image" alt="">
 	<input type="file" accept="image/*" name="image" class="upload-input" onchange="changeFile(event)">
 	<div class="email">
 		<label for="email">Change your email</label>
@@ -16,7 +16,7 @@
 		<input type="password" name="new-password" id="new-password">
 	</div>
 	<label for="bio">Your biography</label>
-	<textarea class="bio-input" name="bio" id="bio" cols="30" rows="10"><?php echo $_SESSION['user']['bio']; ?></textarea>
+	<textarea class="bio-input" name="bio" id="bio" cols="20" rows="10"><?php echo $_SESSION['user']['bio']; ?></textarea>
 	<button type="submit">Save</button>
 </form>
 <?php require __DIR__.'/views/footer.php'; ?>

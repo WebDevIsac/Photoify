@@ -43,14 +43,6 @@ form input {
 	text-align: center;
 }
 
-form input:active {
-	color: green;
-}
-
-form input:focus {
-	color: blue;
-}
-
 form small {
 	font-size: 16px;
 	margin: 10px 0;

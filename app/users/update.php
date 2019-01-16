@@ -7,22 +7,24 @@ if (isset($_SESSION['user'])) {
 
 	if (isset($_FILES['image'])) {
 		$image = $_FILES['image'];
-		$type = $image['type'];
-		$size = $image['size'];
-		
-		if ($type === 'image/jpg' || $type === 'image/png' || $type === 'image/gif' && $size < 2 * MB) 
-		{
-			$imagePath = __DIR__.'/../../assets/images/profile-pictures/';
-			$imageName =  uniqid() . "-$date-" . $image['name'];
+		if ($image['size'] > 1) {
+			$type = $image['type'];
+			$size = $image['size'];
 			
-			move_uploaded_file($image['tmp_name'], $imagePath . $imageName);
-			
-			$insertImage = $pdo -> prepare('UPDATE users SET profile_pic_url = :profile_pic_url WHERE user_id = :user_id');
-			$insertImage -> bindParam(':profile_pic_url', $imageName, PDO::PARAM_STR);
-			$insertImage -> bindParam(':user_id', $user['user_id'], PDO::PARAM_INT);
-			$insertImage -> execute();
-			
-			$_SESSION['user']['profile_pic'] = $imageName;
+			if ($type === 'image/jpg' || $type === 'image/png' || $type === 'image/gif' || 'image/jpeg' && $size < 5 * MB) 
+			{
+				$imagePath = __DIR__.'/../../assets/images/profile-pictures/';
+				$imageName =  uniqid() . "-$date-" . $image['name'];
+				
+				move_uploaded_file($image['tmp_name'], $imagePath . $imageName);
+				
+				$insertImage = $pdo -> prepare('UPDATE users SET profile_image = :profile_image WHERE user_id = :user_id');
+				$insertImage -> bindParam(':profile_image', $imageName, PDO::PARAM_STR);
+				$insertImage -> bindParam(':user_id', $user['user_id'], PDO::PARAM_INT);
+				$insertImage -> execute();
+				
+				$_SESSION['user']['profile_image'] = $imageName;
+			}
 		}
 	}
 

@@ -18,12 +18,12 @@
 		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
 				<a class="user-info" href="app/users/load.php?current-profile=<?php echo $post['user_id']; ?>">
-					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $post['profile_pic']; ?>" alt="">
+					<img class="profile-picture" src="assets/images/profile-pictures/<?php echo $post['profile_image']; ?>" alt="">
 					<p><?php echo $post['username']; ?></p>
 				</a>
 			</div>
 			<div class="image-container">
-				<img class="image" src="assets/posts/<?php echo $post['photo_url']; ?>" alt="">
+				<img class="image" src="assets/posts/<?php echo $post['image']; ?>" alt="">
 			</div>
 			<div class="text-container">
 				<p class="like-info"><?php echo $likeButtonText ?></p>

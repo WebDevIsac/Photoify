@@ -52,10 +52,10 @@ if (isset($_SESSION['following'])) {
 						$_SESSION['posts'][] = 
 						[
 							'post_id' => $post['post_id'],
-							'photo_url' => $post['photo_url'],
+							'image' => $post['image'],
 							'username' => $post['username'],
 							'user_id' => $post['user_id'],
-							'profile_pic' => $user['profile_pic_url'],
+							'profile_image' => $user['profile_image'],
 							'timestamp' => $date,
 							'caption' => $post['caption'],
 							'likes' => $post['likes'],
