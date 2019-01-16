@@ -5,6 +5,7 @@
 	if (!isset($_SESSION['user'])) {
 		redirect('login.php');
 	}
+	if (isset($_SESSION['all_posts'])):
 	?>
 
 <div class="feed">
@@ -12,8 +13,8 @@
 	foreach ($_SESSION['all_posts'] as $post): 
 		if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
 		else { $likeButtonText = 'Like'; }
+		?>
 
-	?>
 		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
 				<a class="user-info" href="app/users/load.php?current-profile=<?php echo $post['user_id']; ?>">
@@ -31,10 +32,11 @@
 				<p class="caption"><?php echo $post['caption']; ?></p>
 			</div>
 		</div> <!-- post -->
-	<?php
-		endforeach; 
-	?>
+	<?php endforeach; ?>
 </div> <!-- feed -->
+	<?php else: ?>
+	<h1>No posts uploaded</h1>
+	<?php endif; ?>
 
 <?php require __DIR__.'/views/footer.php'; ?>
 

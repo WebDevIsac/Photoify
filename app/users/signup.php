@@ -33,14 +33,10 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
 			];
 			redirect('../../signup.php');
 		}
-		// if ($checkUser[] < 10) {
-
-		// }
 	}
 
-    $addUser = $pdo -> prepare('INSERT INTO users(email, firstname, lastname, username, password, profile_pic_url) VALUES(:email, :firstname, :lastname, :username, :password, avatar.jpg)');
-
-    $addUser -> bindParam(':email', $email, PDO::PARAM_STR);
+    $addUser = $pdo -> prepare("INSERT INTO users(firstname, lastname, email, username, password, profile_image, bio) VALUES(:firstname, :lastname, :email, :username, :password, 'avatar.jpg', '')");
+	$addUser -> bindParam(':email', $email, PDO::PARAM_STR);
     $addUser -> bindParam(':firstname', $firstname, PDO::PARAM_STR);
     $addUser -> bindParam(':lastname', $lastname, PDO::PARAM_STR);
     $addUser -> bindParam(':username', $username, PDO::PARAM_STR);
@@ -58,12 +54,12 @@ if (isset($_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['user
     $_SESSION['user'] = 
 		[
 			'user_id' => $newUser['user_id'],
-			'username' => $newUser['username'],
-			'email' => $newUser['email'],
 			'firstname' => $newUser['firstname'],
 			'lastname' => $newUser['lastname'],
-			'profile_pic' => 'avatar.jpg',
-			'bio' => NULL
+			'email' => $newUser['email'],
+			'username' => $newUser['username'],
+			'profile_image' => $newUser['profile_image'],
+			'bio' => ''
 		];
 	
 	unset($_SESSION['error']);

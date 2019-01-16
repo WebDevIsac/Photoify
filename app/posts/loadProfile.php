@@ -34,51 +34,53 @@ if (isset($_SESSION['current-profile'])) {
 	$loadPosts -> bindParam(':user_id', $_SESSION['current-profile']['user_id'], PDO::PARAM_INT);
 	$loadPosts -> execute();
 	$loadPosts = $loadPosts -> fetchAll(PDO::FETCH_ASSOC);
-	foreach ($loadPosts as $loadPost) {
-		$loadLikes = $pdo -> prepare('SELECT * FROM likes WHERE post_id = :post_id');
-		$loadLikes -> bindParam(':post_id', $loadPost['post_id'], PDO::PARAM_INT);
-		$loadLikes -> execute();
-		$loadLikes = $loadLikes -> fetchAll(PDO::FETCH_ASSOC);
-		if (!$loadLikes) {
-			$count = 0;
-			$isLiked = false;
-		} else {
-			$count = count($loadLikes);
-			foreach ($loadLikes as $like) {
-				if ($like['user_id'] == $_SESSION['user']['user_id']) {
-					$isLiked = true;
-				} else {
-					$isLiked = false;
+	if ($loadPosts[0]) {
+		foreach ($loadPosts as $loadPost) {
+			$loadLikes = $pdo -> prepare('SELECT * FROM likes WHERE post_id = :post_id');
+			$loadLikes -> bindParam(':post_id', $loadPost['post_id'], PDO::PARAM_INT);
+			$loadLikes -> execute();
+			$loadLikes = $loadLikes -> fetchAll(PDO::FETCH_ASSOC);
+			if (!$loadLikes) {
+				$count = 0;
+				$isLiked = false;
+			} else {
+				$count = count($loadLikes);
+				foreach ($loadLikes as $like) {
+					if ($like['user_id'] == $_SESSION['user']['user_id']) {
+						$isLiked = true;
+					} else {
+						$isLiked = false;
+					}
+				}
+			}
+			$loadPost['is_liked'] = $isLiked;
+			$loadPost['likes'] = $count;
+			
+			$posts[] = $loadPost;
+			$dates[] = $loadPost['timestamp'];
+		}
+		
+		rsort($dates);
+		unset($_SESSION['current-profile']['posts']);
+		foreach ($dates as $date) {
+			foreach ($posts as $post) {
+				if ($post['timestamp'] === $date) {
+					$_SESSION['current-profile']['posts'][] = 
+					[
+						'post_id' => $post['post_id'],
+						'photo_url' => $post['photo_url'],
+						'username' => $post['username'],
+						'user_id' => $post['user_id'],
+						'timestamp' => $date,
+						'caption' => $post['caption'],
+						'likes' => $post['likes'],
+						'is_liked' => $post['is_liked']
+					];
 				}
 			}
 		}
-		$loadPost['is_liked'] = $isLiked;
-		$loadPost['likes'] = $count;
-
-		$posts[] = $loadPost;
-		$dates[] = $loadPost['timestamp'];
 	}
 	
-	rsort($dates);
-	unset($_SESSION['current-profile']['posts']);
-	foreach ($dates as $date) {
-		foreach ($posts as $post) {
-			if ($post['timestamp'] === $date) {
-				$_SESSION['current-profile']['posts'][] = 
-				[
-					'post_id' => $post['post_id'],
-					'photo_url' => $post['photo_url'],
-					'username' => $post['username'],
-					'user_id' => $post['user_id'],
-					'timestamp' => $date,
-					'caption' => $post['caption'],
-					'likes' => $post['likes'],
-					'is_liked' => $post['is_liked']
-				];
-			}
-		}
-	}
-
 	redirect('../follows/loadProfile.php');
 }
 

@@ -51,7 +51,8 @@ if (isset($_SESSION['user'])) {
 			}
 		}
 	}
-		redirect('../posts/load.php');
+	
+	redirect('../posts/load.php');
 }
 
 redirect('../../login.php');

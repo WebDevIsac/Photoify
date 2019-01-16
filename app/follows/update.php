@@ -46,5 +46,5 @@ if (isset($_SESSION['current-profile'], $_SESSION['user'])) {
 		$addFollower -> execute();
 	}
 
-	redirect('loadProfile.php');
+	redirect('load.php');
 }

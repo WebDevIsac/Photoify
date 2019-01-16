@@ -73,7 +73,8 @@ if (isset($_SESSION['following'])) {
 	
 	redirect('../../index.php');
 }
-$userID = $_SESSION['user']['user_id'];
-redirect("../users/load.php?current-profile=$userID");
+
+
+redirect("../posts/loadAllPosts.php");
 
 ?>
