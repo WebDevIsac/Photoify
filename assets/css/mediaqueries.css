@@ -19,11 +19,51 @@
 	}
 
 	/* Profile */
+	
+	.profile-container .user-button a {
+		font-size: 18px;
+	}
+	
+	.profile-container h3 {
+		font-size: 24px;
+	}
+	
 	.profile-container .bio {
 		width: 40vw;
+		font-size: 18px;
 	}
 
 	.profile-container .user-counts {
+		width: 60vw;
+		height: 80px;
+	}
+
+	.profile-container .user-counts div {
+		height: 80px;
+	}
+
+	/* Forms */ 
+	form input, form button, form textarea {
+		width: 60vw;
+	}
+
+	.upload-form {
+		min-height: 140vh;
+	}
+
+	.upload-form .upload-image, .upload-form .caption-input, .upload-form button {
+		width: 60vw;
+	}
+
+	.upload-form label {
+		font-size: 30px;
+	}
+
+	.edit-profile-form label {
+		font-size: 24px;
+	}
+
+	.edit-profile-form .bio-input, .edit-profile-form button {
 		width: 60vw;
 	}
 }
@@ -55,6 +95,24 @@
 	.profile-container .user-counts {
 		width: 40vw;
 	}
+
+	/* Forms */ 
+	form input, form button {
+		width: 40vw;
+	}
+
+	.upload-form {
+		min-height: 160vh;
+	}
+
+	.upload-form .upload-image, .upload-form .caption-input, .upload-form button {
+		width: 40vw;
+	}
+
+	.edit-profile-form .bio-input, .edit-profile-form button {
+		width: 40vw;
+	}
+
 }
 
 

@@ -56,13 +56,13 @@
 				</a>
 			</div>
 			<div class="followers">
-				<a href="followers.php">
+				<a>
 					<h3>Followers</h3>
 					<h3><?php echo $followersCount; ?></h3>
 				</a>
 			</div>
 			<div class="following">
-				<a href="following.php">
+				<a>
 					<h3>Following</h3>
 					<h3><?php echo $followingCount; ?></h3>
 				</a>

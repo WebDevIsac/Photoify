@@ -7,7 +7,7 @@ if (isset($_SESSION['user'])) {
 ?>
 
 <div class="form-container">
-	<form action="app/users/login.php" method="post">
+	<form class="login-form" action="app/users/login.php" method="post">
 		<div class="form-username">
 			<label for="username">Username</label>
 			<input name="username" type="text" required>

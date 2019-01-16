@@ -1,14 +1,13 @@
 const postPhoto = document.querySelectorAll('.post .image-container');
 const likeBtn = document.querySelectorAll('.text-container .like-button');
 const likeInfo = document.querySelectorAll('.text-container .like-info');
+const header = document.querySelector('header h1');
 
-const uploadImage = document.querySelector('.add-form .upload-image');
-const uploadInput = document.querySelector('.add-form .upload-input');
+const uploadImage = document.querySelector('.upload-form .upload-image');
+const uploadInput = document.querySelector('.upload-form .upload-input');
 
 const changeImage = document.querySelector('.edit-profile-form .upload-image');
 const changeInput = document.querySelector('.edit-profile-form .upload-input');
-
-
 
 for (let i = 0; i < postPhoto.length; i++) {
 	if (likeInfo[i].innerHTML === 'Like') {
@@ -19,7 +18,7 @@ for (let i = 0; i < postPhoto.length; i++) {
 	}
 }
 
-if (document.URL.indexOf("add.php") >= 0){ 
+if (document.URL.indexOf("upload.php") >= 0){ 
 	
 	uploadImage.addEventListener('click', () => {
 		uploadInput.click();
@@ -41,3 +40,19 @@ const uploadFile = function(e) {
 const changeFile = function(e) {
 	changeImage.src = URL.createObjectURL(e.target.files[0]);
 };
+
+
+
+
+if (document.URL.indexOf("profile.php") >= 0) {
+	header.innerHTML = 'Profile';
+}
+else if (document.URL.indexOf("edit-profile.php") >= 0) {
+	header.innerHTML = 'Edit Profile';	
+}
+else if (document.URL.indexOf("upload.php") >= 0) {
+	header.innerHTML = 'Upload Post';	
+}
+else if (document.URL.indexOf("explore.php") >= 0) {
+	header.innerHTML = 'Explore';	
+}

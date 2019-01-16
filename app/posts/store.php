@@ -10,12 +10,12 @@ unset($_SESSION['file-error']);
 if ($type !== 'image/jpeg' && $type !== 'image/jpg' && $type !== 'image/gif' && $type !== 'image/png') 
 {
 	$_SESSION['file-error'] = 'Wrong file format';
-	redirect('../../add.php');
+	redirect('../../upload.php');
 } 
 else if ($size > 5 * MB) 
 {
 	$_SESSION['file-error'] = 'File to big';
-	redirect('../../add.php');
+	redirect('../../upload.php');
 }
 
 $imagePath = __DIR__.'/../../assets/posts/';

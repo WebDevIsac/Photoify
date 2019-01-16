@@ -11,7 +11,7 @@
 				<a href="app/posts/loadAllPosts.php" class="nav-link"><img src="assets/images/svg-images/search-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
-				<a href="../add.php" class="nav-link"><img src="assets/images/svg-images/camera-50px.svg" alt=""></a>
+				<a href="../upload.php" class="nav-link"><img src="assets/images/svg-images/camera-50px.svg" alt=""></a>
 			</li>
 			<li class="nav-item">
 				<a href="app/users/load.php?current-profile=<?php echo $_SESSION['user']['user_id']; ?>">

@@ -1,5 +1,5 @@
 <header>
-	<a href="../app/follows/load.php">Photoify</a>
+	<h1>Photoify</h1>
 </header>
 
 <div class="container">
