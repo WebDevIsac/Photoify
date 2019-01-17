@@ -51,20 +51,20 @@
 		min-height: 140vh;
 	}
 
-	.upload-form .upload-image, .upload-form .caption-input, .upload-form button {
+	.edit-post-form {
+		min-height: 200vh;
+	}
+
+	.upload-form .upload-image, .upload-form .caption-input, .upload-form button, .edit-profile-form .bio-input, .edit-profile-form button, .edit-post-form .post-image, .edit-post-form .caption-input, .edit-post-form button {
 		width: 60vw;
 	}
 
-	.upload-form label {
+	.upload-form label, .edit-post-form label {
 		font-size: 30px;
 	}
 
 	.edit-profile-form label {
 		font-size: 24px;
-	}
-
-	.edit-profile-form .bio-input, .edit-profile-form button {
-		width: 60vw;
 	}
 }
 
@@ -105,11 +105,7 @@
 		min-height: 160vh;
 	}
 
-	.upload-form .upload-image, .upload-form .caption-input, .upload-form button {
-		width: 40vw;
-	}
-
-	.edit-profile-form .bio-input, .edit-profile-form button {
+	.upload-form .upload-image, .upload-form .caption-input, .upload-form button, .edit-profile-form .bio-input, .edit-profile-form button, .edit-post-form .post-image, .edit-post-form .caption-input, .edit-post-form button {
 		width: 40vw;
 	}
 
