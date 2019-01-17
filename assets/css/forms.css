@@ -52,7 +52,7 @@ form p a {
 }
 
 
-.upload-form, .edit-profile-form {
+.upload-form, .edit-profile-form, .edit-post-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -61,7 +61,11 @@ form p a {
 	min-height: 120vh;
 }
 
-.upload-form .upload-image, .edit-profile-form .upload-image {
+.edit-post-form {
+	min-height: 170vh;
+}
+
+.upload-form .upload-image, .edit-profile-form .upload-image, .edit-post-form .post-image {
 	width: 90vw;
 	border: 2px solid var(--border-color);
 	cursor: pointer;
@@ -71,13 +75,15 @@ form p a {
 	display: none;
 }
 
-.upload-form .caption-input, .edit-profile-form .bio-input {
+.upload-form .caption-input, .edit-profile-form .bio-input, .edit-post-form .caption-input {
 	border: 2px solid var(--border-color);
 	width: 90vw;
 	resize: none;
+	font-size: 24px;
+
 }
 
-.upload-form button, .edit-profile-form button {
+.upload-form button, .edit-profile-form button, .edit-post-form button {
 	width: 90vw;
 }
 
@@ -86,10 +92,6 @@ form p a {
 	height: 300px;
 	background: url('../images/profile-pictures/avatar.jpg');
 	background-repeat: no-repeat;
-}
-
-.upload-form .caption-input, .edit-profile-form .bio-input {
-	font-size: 24px;
 }
 
 .edit-profile-form {
@@ -111,3 +113,6 @@ form p a {
 	width: 90vw;
 }
 
+.edit-post-form {
+
+}

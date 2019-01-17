@@ -56,3 +56,6 @@ else if (document.URL.indexOf("upload.php") >= 0) {
 else if (document.URL.indexOf("explore.php") >= 0) {
 	header.innerHTML = 'Explore';	
 }
+else if (document.URL.indexOf("edit-post.php") >= 0) {
+	header.innerHTML = 'Edit Post';	
+}

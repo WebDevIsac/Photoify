@@ -5,11 +5,10 @@ $postID = $_GET['edit'];
 foreach ($_SESSION['current-profile']['posts'] as $post):
 	if ($post['post_id'] == $_GET['edit']):
 ?>
-	<form class="add-form" action="app/posts/update.php?post=<?php echo $post['post_id']; ?>" method="post" enctype="multipart/form-data">
-		<h1>Edit Post</h1>
-		<img src="assets/posts/<?php echo $post['image']; ?>" class="upload-image" alt="">
+	<form class="edit-post-form" action="app/posts/update.php?post=<?php echo $post['post_id']; ?>" method="post" enctype="multipart/form-data">
+		<img src="assets/posts/<?php echo $post['image']; ?>" class="post-image" alt="">
 		<label for="caption">Caption</label>
-		<textarea class="caption-input" name="caption" id="caption" cols="30" rows="10"><?php echo $post['caption']; ?></textarea>
+		<textarea class="caption-input" name="caption" id="caption" cols="20" rows="10"><?php echo $post['caption']; ?></textarea>
 		<button type="submit">Done</button>
 	</form>
 
