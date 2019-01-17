@@ -100,13 +100,13 @@ $ git clone git@github.com:WebDevIsac/Photoify.git
 
 ### Creator:
 
-- [Isac Larrson](https://github.com/WebDevIsac)
+- [Isac Larrson](https://github.com/WebDevIsac) (Windows)
 
 ### Testers:
 
-- [Vincent Lidebo Kjellman](https://github.com/VincentLideboKjellman)
+- [Vincent Lidebo Kjellman](https://github.com/VincentLideboKjellman) (Mac)
 
-- [Gustav Svendsen](https://github.com/gsvendsen)
+- [Gustav Svendsen](https://github.com/gsvendsen) (Mac)
  
 ### License
 
