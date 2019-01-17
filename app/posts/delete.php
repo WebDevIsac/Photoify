@@ -10,7 +10,7 @@ $imageURL = $delete[2];
 $imagePath = __DIR__.'/../../assets/posts/' . $imageURL;
 $loggedInUser = $_SESSION['user']['user_id'];
 
-if ($userID === $loggedInUser) {
+if ($userID == $loggedInUser) {
 	$deletePost = $pdo -> prepare('DELETE FROM posts WHERE post_id = :post_id AND user_id = :user_id');
 	$deletePost -> bindParam(':post_id', $postID, PDO::PARAM_INT);
 	$deletePost -> bindParam(':user_id', $loggedInUser, PDO::PARAM_INT);
@@ -21,5 +21,5 @@ if ($userID === $loggedInUser) {
 		unlink($imagePath);
 	}
 	
-	redirect('loadProfile.php');
+	redirect("../users/load.php?current-profile=$userID.php");
 }
