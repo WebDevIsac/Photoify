@@ -14,11 +14,15 @@ Well... let me go through all of it's features.
 
 - You can add and edit your profile bio.
 
+- You can edit your email and password.
+
 - You can upload, edit and delete posts. 
 
 - You can follow and unfollow other users. 
 
 - You can like other users posts, and yes for all those self loving people out there: You can also like your own posts. 
+
+- And if you accidentally liked a post you can ofcourse unlike it. 
 
 ### The criterias for the assignment:
 
