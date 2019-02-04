@@ -1,4 +1,5 @@
 [![StyleCI](https://github.styleci.io/repos/161142516/shield?branch=master)](https://github.styleci.io/repos/161142516)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 # Photoify
 
