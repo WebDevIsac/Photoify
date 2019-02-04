@@ -1,3 +1,5 @@
+[![StyleCI](https://github.styleci.io/repos/161142516/shield?branch=master)](https://github.styleci.io/repos/161142516)
+
 # Photoify
 
 <img src="https://media3.giphy.com/media/pJjKzRqY9HwME/giphy.gif?cid=3640f6095c40263c49355134779e812c">
