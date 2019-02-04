@@ -1,19 +1,22 @@
 <?php require __DIR__.'/views/header.php' ?>
 
 
-<?php 
-	if (!isset($_SESSION['user'])) {
-		redirect('login.php');
-	}
-	if (isset($_SESSION['all_posts'])):
-	?>
+<?php
+    if (!isset($_SESSION['user'])) {
+        redirect('login.php');
+    }
+    if (isset($_SESSION['all_posts'])):
+    ?>
 
 <div class="feed">
-	<?php 
-	foreach ($_SESSION['all_posts'] as $post): 
-		if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
-		else { $likeButtonText = 'Like'; }
-		?>
+	<?php
+    foreach ($_SESSION['all_posts'] as $post):
+        if ($post['is_liked']) {
+            $likeButtonText = 'Unlike';
+        } else {
+            $likeButtonText = 'Like';
+        }
+        ?>
 
 		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">

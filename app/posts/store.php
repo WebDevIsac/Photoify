@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require __DIR__.'/../autoload.php';
 $image = $_FILES['image'];
@@ -7,15 +7,12 @@ $size = $image['size'];
 
 unset($_SESSION['file-error']);
 
-if ($type !== 'image/jpeg' && $type !== 'image/jpg' && $type !== 'image/gif' && $type !== 'image/png') 
-{
-	$_SESSION['file-error'] = 'Wrong file format';
-	redirect('../../upload.php');
-} 
-else if ($size > 5 * MB) 
-{
-	$_SESSION['file-error'] = 'File to big';
-	redirect('../../upload.php');
+if ($type !== 'image/jpeg' && $type !== 'image/jpg' && $type !== 'image/gif' && $type !== 'image/png') {
+    $_SESSION['file-error'] = 'Wrong file format';
+    redirect('../../upload.php');
+} elseif ($size > 5 * MB) {
+    $_SESSION['file-error'] = 'File to big';
+    redirect('../../upload.php');
 }
 
 $imagePath = __DIR__.'/../../assets/posts/';
@@ -36,13 +33,7 @@ $storePost -> bindParam(':username', $username, PDO::PARAM_STR);
 $storePost -> execute();
 
 if (isset($_SESSION['posts'])) {
-	redirect('../../index.php');
-} 
+    redirect('../../index.php');
+}
 
 redirect('loadAllPosts.php');
-
-
-
-
-
-?>

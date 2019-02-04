@@ -3,7 +3,7 @@
 <form class="upload-form" action="app/posts/store.php" method="post" enctype="multipart/form-data">
 	<img src="assets/images/svg-images/no-image.svg" class="upload-image" title="Choose image">
 	<input type="file" accept="image/*" name="image" class="upload-input" onchange="uploadFile(event)">
-	<?php if(isset($_SESSION['file-error'])): ?>
+	<?php if (isset($_SESSION['file-error'])): ?>
 	<h3>Error: <?php echo $_SESSION['file-error']; ?></h3>
 	<?php endif; ?>
 	<div class="caption-container">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require __DIR__.'/../autoload.php';
 
@@ -20,5 +20,3 @@ $storeFollowers -> bindParam(':follower_Id', $userID, PDO::PARAM_INT);
 $storeFollowers -> execute();
 
 redirect('../../profile.php');
-
-?>

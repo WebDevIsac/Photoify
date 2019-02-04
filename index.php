@@ -1,18 +1,21 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<?php 
-	if (!isset($_SESSION['user'])) {
-		redirect('login.php');
-	}
-	?>
+<?php
+    if (!isset($_SESSION['user'])) {
+        redirect('login.php');
+    }
+    ?>
 
 <div class="feed">
-	<?php 
-	foreach ($_SESSION['posts'] as $post): 
-		if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
-		else { $likeButtonText = 'Like'; }
+	<?php
+    foreach ($_SESSION['posts'] as $post):
+        if ($post['is_liked']) {
+            $likeButtonText = 'Unlike';
+        } else {
+            $likeButtonText = 'Like';
+        }
 
-	?>
+    ?>
 		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
 				<a class="user-info" href="app/users/load.php?current-profile=<?php echo $post['user_id']; ?>">
@@ -31,8 +34,8 @@
 			</div>
 		</div> <!-- post -->
 	<?php
-		endforeach; 
-	?>
+        endforeach;
+    ?>
 </div> <!-- feed -->
 
 <?php require __DIR__.'/views/footer.php'; ?>

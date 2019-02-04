@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require __DIR__.'/../autoload.php';
 
@@ -11,15 +11,14 @@ $imagePath = __DIR__.'/../../assets/posts/' . $imageURL;
 $loggedInUser = $_SESSION['user']['user_id'];
 
 if ($userID == $loggedInUser) {
-	$deletePost = $pdo -> prepare('DELETE FROM posts WHERE post_id = :post_id AND user_id = :user_id');
-	$deletePost -> bindParam(':post_id', $postID, PDO::PARAM_INT);
-	$deletePost -> bindParam(':user_id', $loggedInUser, PDO::PARAM_INT);
-	$deletePost -> execute();
+    $deletePost = $pdo -> prepare('DELETE FROM posts WHERE post_id = :post_id AND user_id = :user_id');
+    $deletePost -> bindParam(':post_id', $postID, PDO::PARAM_INT);
+    $deletePost -> bindParam(':user_id', $loggedInUser, PDO::PARAM_INT);
+    $deletePost -> execute();
 
-	if (is_file($imagePath))
-	{
-		unlink($imagePath);
-	}
-	
-	redirect("../users/load.php?current-profile=$userID.php");
+    if (is_file($imagePath)) {
+        unlink($imagePath);
+    }
+    
+    redirect("../users/load.php?current-profile=$userID.php");
 }

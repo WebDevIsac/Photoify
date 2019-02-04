@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require __DIR__.'/../autoload.php';
 
@@ -8,5 +8,3 @@ session_destroy();
 
 
 redirect('../../login.php');
-
-?>

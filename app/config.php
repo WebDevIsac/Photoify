@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -8,5 +8,3 @@ return [
     'title' => 'Projects',
     'database_path' => sprintf('sqlite:%s/database/database.db', __DIR__),
 ];
-
-?>

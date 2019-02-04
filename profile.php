@@ -1,43 +1,43 @@
-<?php require __DIR__.'/views/header.php'; 
+<?php require __DIR__.'/views/header.php';
 
-	unset($_SESSION['like_post_id']); 
-	if (isset($_SESSION['current-profile'])) { 
-		$user = $_SESSION['current-profile'];
-		$userID = $user['user_id'];
-		if ($user['user_id'] == $_SESSION['user']['user_id']) {
-			$myProfile = true;
-			$buttonText = 'Edit Profile';
-			$buttonLink = 'edit-profile.php'; 
-		} else if (isset($_SESSION['following'])) {
-			foreach ($_SESSION['following'] as $follow) {
-				$buttonLink = "app/follows/update.php?user=$userID";
-				if ($follow['user_id'] == $user['user_id']) {
-					$buttonText = 'Unfollow';
-				} else {
-					$buttonText = 'Follow'; 
-				}
-			}
-		} else {
-			$buttonText = 'Follow';
-			$buttonLink = "app/follows/update.php?user=$userID";
-		}
+    unset($_SESSION['like_post_id']);
+    if (isset($_SESSION['current-profile'])) {
+        $user = $_SESSION['current-profile'];
+        $userID = $user['user_id'];
+        if ($user['user_id'] == $_SESSION['user']['user_id']) {
+            $myProfile = true;
+            $buttonText = 'Edit Profile';
+            $buttonLink = 'edit-profile.php';
+        } elseif (isset($_SESSION['following'])) {
+            foreach ($_SESSION['following'] as $follow) {
+                $buttonLink = "app/follows/update.php?user=$userID";
+                if ($follow['user_id'] == $user['user_id']) {
+                    $buttonText = 'Unfollow';
+                } else {
+                    $buttonText = 'Follow';
+                }
+            }
+        } else {
+            $buttonText = 'Follow';
+            $buttonLink = "app/follows/update.php?user=$userID";
+        }
 
-		if (isset($user['posts'])) {
-			$postsCount = count($user['posts']);
-		} else {
-			$postsCount = 0;
-		}
-		if (isset($user['followers'])) {
-			$followersCount = count($user['followers']);
-		} else {
-			$followersCount = 0;
-		}
-		if (isset($user['following'])) {
-			$followingCount = count($user['following']);
-		} else {
-			$followingCount = 0;
-		}
-	}
+        if (isset($user['posts'])) {
+            $postsCount = count($user['posts']);
+        } else {
+            $postsCount = 0;
+        }
+        if (isset($user['followers'])) {
+            $followersCount = count($user['followers']);
+        } else {
+            $followersCount = 0;
+        }
+        if (isset($user['following'])) {
+            $followingCount = count($user['following']);
+        } else {
+            $followingCount = 0;
+        }
+    }
 
 ?>
 	
@@ -73,12 +73,15 @@
 
 
 	<div class="feed">
-		<?php 
-		if (isset($user['posts'])):
-		foreach ($user['posts'] as $post): 
-			if ($post['is_liked']) { $likeButtonText = 'Unlike'; }
-			else { $likeButtonText = 'Like'; }
-		?>
+		<?php
+        if (isset($user['posts'])):
+        foreach ($user['posts'] as $post):
+            if ($post['is_liked']) {
+                $likeButtonText = 'Unlike';
+            } else {
+                $likeButtonText = 'Like';
+            }
+        ?>
 		<div class="post" id="<?php echo $post['post_id']; ?>">
 			<div class="user-container">
 				<div class="user-info">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -19,5 +19,3 @@ $date = date('ymd');
 
 // Define one MB (megabyte)
 define('MB', 1048576);
-
-?>
